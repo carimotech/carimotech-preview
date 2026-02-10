@@ -13,7 +13,7 @@
         .bento-card { transition: transform 0.3s ease, border-color 0.3s ease; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; }
         .bento-card:hover { transform: translateY(-5px); border-color: #66FCF1; }
         .gradient-text { background: linear-gradient(90deg, #66FCF1, #45A29E); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .img-container { background: #1F2833; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .img-container { background: #1F2833; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         h3, h4 { color: white; }
     </style>
 </head>
@@ -21,7 +21,7 @@
 
     <nav class="fixed w-full z-50 glass py-3 px-6 flex justify-between items-center border-b border-white/5">
         <a href="#" class="flex items-center gap-3">
-            <img src="carimo-logo.png" alt="CARIMO Logo" class="h-12 w-auto"> 
+            <img src="carimo-logo.png" alt="CARIMO" class="h-12 w-auto object-contain"> 
             <div class="flex flex-col">
                 <span class="text-lg font-black tracking-tighter italic leading-none text-white">CARIMO <span class="accent-text">TECHNOLOGIES</span></span>
                 <span class="text-[9px] opacity-50 uppercase tracking-widest mt-0.5">Private Limited</span>
@@ -38,33 +38,56 @@
 
     <header class="min-h-screen flex flex-col justify-center items-center px-6 text-center pt-20">
         <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">Control, AI, Real-time Systems, <br><span class="gradient-text">Implementation, Modelling and Optimization</span></h1>
-        <p class="text-sm uppercase tracking-[0.4em] accent-text mb-8 opacity-80">CARIMO Technologies Private Limited</p>
-        <p class="text-lg max-w-3xl opacity-70 leading-relaxed mb-12">
-            We deliver truly customized solutions built on cutting-edge R&D in Industrial AI, advanced control systems, Agentic RAG, and CUDA-optimized video analytics.
-        </p>
-        <div class="flex gap-4">
-            <a href="#capmac" class="accent-bg px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wider hover:shadow-[0_0_20px_rgba(102,252,241,0.4)] transition">Explore CAPMAC AI</a>
-             <a href="#contact" class="border border-white/20 px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wider hover:bg-white/5 transition">Get in Touch</a>
+        <p class="text-sm uppercase tracking-[0.4em] accent-text mb-12 opacity-80">CARIMO Technologies Private Limited</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
+            <a href="#consulting" class="group glass p-6 rounded-2xl hover:bg-[#66FCF1]/10 transition border border-white/10">
+                <span class="block text-2xl mb-2">💡</span>
+                <h3 class="font-bold text-lg mb-1 group-hover:accent-text">Strategic Consulting</h3>
+                <p class="text-xs opacity-50">AI Agents, Industrial & Defence</p>
+            </a>
+            <a href="#capmac" class="group glass p-6 rounded-2xl hover:bg-[#66FCF1]/10 transition border border-[#66FCF1]/30">
+                <span class="block text-2xl mb-2">🤖</span>
+                <h3 class="font-bold text-lg mb-1 group-hover:accent-text">CAPMAC AI Suite</h3>
+                <p class="text-xs opacity-50">RAG, Video Analytics & PdM</p>
+            </a>
+            <a href="#education" class="group glass p-6 rounded-2xl hover:bg-[#66FCF1]/10 transition border border-white/10">
+                <span class="block text-2xl mb-2">📚</span>
+                <h3 class="font-bold text-lg mb-1 group-hover:accent-text">Educational Products</h3>
+                <p class="text-xs opacity-50">ML Kits & Control Labs</p>
+            </a>
         </div>
     </header>
 
     <section id="consulting" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
         <h2 class="text-sm font-bold accent-text uppercase tracking-widest mb-16 text-center">Strategic Consulting Pillars</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="glass p-8 rounded-3xl bento-card relative">
-                <div class="text-4xl mb-6 opacity-80">🧠</div>
-                <h4 class="text-lg font-bold mb-4">Advanced AI Agents & Analytics</h4>
-                <p class="text-sm opacity-60 leading-relaxed">Custom Agentic RAG Systems & AI-Powered Video Analytics solutions for education, healthcare, agriculture, and cultural heritage.</p>
+            <div class="glass overflow-hidden rounded-3xl bento-card flex flex-col">
+                <div class="h-48 img-container">
+                    <img src="consulting-ai.jpg" alt="AI Agents" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition">
+                </div>
+                <div class="p-8">
+                    <h4 class="text-lg font-bold mb-4 accent-text">Advanced AI Agents</h4>
+                    <p class="text-sm opacity-60 leading-relaxed">Custom Agentic RAG Systems & AI-Powered Video Analytics solutions for education, healthcare, and cultural heritage.</p>
+                </div>
             </div>
-            <div class="glass p-8 rounded-3xl bento-card relative">
-                 <div class="text-4xl mb-6 opacity-80">⚙️</div>
-                <h4 class="text-lg font-bold mb-4">Industrial Solutions</h4>
-                <p class="text-sm opacity-60 leading-relaxed">AI-based predictive maintenance strategies, advanced controller design, and PID control loop tuning and optimization.</p>
+            <div class="glass overflow-hidden rounded-3xl bento-card flex flex-col">
+                <div class="h-48 img-container">
+                    <img src="consulting-ind.jpg" alt="Industrial Solutions" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition">
+                </div>
+                <div class="p-8">
+                    <h4 class="text-lg font-bold mb-4 accent-text">Industrial Solutions</h4>
+                    <p class="text-sm opacity-60 leading-relaxed">AI-based predictive maintenance strategies, advanced controller design, and PID control loop tuning.</p>
+                </div>
             </div>
-            <div class="glass p-8 rounded-3xl bento-card relative">
-                 <div class="text-4xl mb-6 opacity-80">🛡️</div>
-                <h4 class="text-lg font-bold mb-4">Specialized & Defence Applications</h4>
-                <p class="text-sm opacity-60 leading-relaxed">Customized solutions for automated document retrieval, unique industrial automation, and complex defence sector challenges.</p>
+            <div class="glass overflow-hidden rounded-3xl bento-card flex flex-col">
+                <div class="h-48 img-container">
+                    <img src="consulting-defence.jpg" alt="Defence Applications" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition">
+                </div>
+                <div class="p-8">
+                    <h4 class="text-lg font-bold mb-4 accent-text">Defence & Specialized</h4>
+                    <p class="text-sm opacity-60 leading-relaxed">Customized solutions for automated document retrieval and complex defence sector challenges.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -83,88 +106,46 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
                 
                 <div class="glass p-8 rounded-[2.5rem] bento-card flex flex-col">
-                    <div class="img-container h-56 mb-8 border-b border-white/10">
+                    <div class="img-container h-56 mb-8 border-b border-white/10 rounded-xl">
                         <img src="capmac-video.jpg" alt="CUDA Video Analytics" class="h-full w-full object-cover opacity-80"> 
                     </div>
                     <h3 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="accent-text">01.</span> Video Analytics</h3>
                     <p class="text-sm opacity-70 mb-6">CUDA-optimized processing for hundreds of video streams simultaneously.</p>
-                    <ul class="text-xs space-y-3 opacity-60 mb-6 flex-grow">
-                        <li class="flex gap-2"><span class="accent-text">▸</span> Advanced pattern recognition with optimized video & audio indexing.</li>
-                        <li class="flex gap-2"><span class="accent-text">▸</span> Precision metrics for efficient content analysis.</li>
-                    </ul>
-                    <div class="bg-[#66FCF1]/10 p-4 rounded-xl border border-[#66FCF1]/20 text-xs">
+                    <div class="bg-[#66FCF1]/10 p-4 rounded-xl border border-[#66FCF1]/20 text-xs mt-auto">
                         <span class="font-bold accent-text">Proven Performance:</span> Highly positive results with international clients like Vela Research (USA).
                     </div>
                 </div>
 
                 <div class="glass p-8 rounded-[2.5rem] bento-card flex flex-col">
-                    <div class="img-container h-56 mb-8 border-b border-white/10">
+                    <div class="img-container h-56 mb-8 border-b border-white/10 rounded-xl">
                         <img src="capmac-rag.jpg" alt="Agentic RAG System" class="h-full w-full object-cover opacity-80"> 
                     </div>
                     <h3 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="accent-text">02.</span> Agentic RAG Systems</h3>
                     <p class="text-sm opacity-70 mb-6">Context-aware AI agents built on Retrieval Augmented Generation for autonomous reasoning.</p>
-                     <ul class="text-xs space-y-3 opacity-60 mb-6 flex-grow">
-                        <li class="flex gap-2"><span class="accent-text">▸</span> Combines LLMs with custom tools and domain-specific data.</li>
-                        <li class="flex gap-2"><span class="accent-text">▸</span> Natural Language Interface for non-technical staff to query complex datasets.</li>
-                    </ul>
-                    <div class="bg-[#66FCF1]/10 p-4 rounded-xl border border-[#66FCF1]/20 text-xs">
+                    <div class="bg-[#66FCF1]/10 p-4 rounded-xl border border-[#66FCF1]/20 text-xs mt-auto">
                         <span class="font-bold accent-text">Enterprise Grade:</span> Utilizes secure, locally-running LLMs for reliability and privacy.
                     </div>
                 </div>
 
                 <div class="glass p-8 rounded-[2.5rem] bento-card flex flex-col">
-                     <div class="img-container h-56 mb-8 border-b border-white/10">
-                        <img src="capmac-pdm.jpg" alt="Predictive Maintenance Dashboard" class="h-full w-full object-cover opacity-80"> 
+                     <div class="img-container h-56 mb-8 border-b border-white/10 rounded-xl">
+                         <img src="capmac-pdm-new.jpg" alt="Predictive Maintenance Graph" class="h-full w-full object-cover opacity-80"> 
                     </div>
                     <h3 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="accent-text">03.</span> Predictive Maintenance (PdM)</h3>
                     <p class="text-sm opacity-70 mb-6">Advanced algorithms to predict equipment failures before they occur.</p>
-                     <ul class="text-xs space-y-3 opacity-60 mb-6 flex-grow">
-                        <li class="flex gap-2"><span class="accent-text">▸</span> Analyzes real-time and historical sensor data.</li>
-                        <li class="flex gap-2"><span class="accent-text">▸</span> Minimizes unplanned downtime and extends equipment lifespan.</li>
-                    </ul>
-                    <div class="bg-[#66FCF1]/10 p-4 rounded-xl border border-[#66FCF1]/20 text-xs">
+                    <div class="bg-[#66FCF1]/10 p-4 rounded-xl border border-[#66FCF1]/20 text-xs mt-auto">
                         <span class="font-bold accent-text">Validated Success:</span> Proven through tests with a German startup and BPCL.
                     </div>
                 </div>
 
                 <div class="glass p-8 rounded-[2.5rem] bento-card flex flex-col">
-                     <div class="img-container h-56 mb-8 border-b border-white/10">
+                     <div class="img-container h-56 mb-8 border-b border-white/10 rounded-xl">
                         <img src="capmac-atpid.jpg" alt="Autotuning PID Control" class="h-full w-full object-cover opacity-80"> 
                     </div>
                     <h3 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="accent-text">04.</span> Autotuning PID (AT-PID)</h3>
                     <p class="text-sm opacity-70 mb-6">Real-time optimization of industrial control loops for precise process control.</p>
-                    <ul class="text-xs space-y-3 opacity-60 mb-6 flex-grow">
-                        <li class="flex gap-2"><span class="accent-text">▸</span> Optimizes level, flow, temperature, pressure, and speed.</li>
-                        <li class="flex gap-2"><span class="accent-text">▸</span> Reduces operational costs and process inefficiencies.</li>
-                    </ul>
-                     <div class="bg-[#66FCF1]/10 p-4 rounded-xl border border-[#66FCF1]/20 text-xs">
+                     <div class="bg-[#66FCF1]/10 p-4 rounded-xl border border-[#66FCF1]/20 text-xs mt-auto">
                         <span class="font-bold accent-text">Industrial Integration:</span> Tested with Yokogawa & Honeywell DCS at BPCL and Aditya Birla.
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass p-10 rounded-3xl border border-[#66FCF1]/30">
-                <h3 class="text-2xl font-bold mb-8 text-center">CAPMAC Deployment Flexibility</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                    <div>
-                        <div class="text-3xl mb-3 accent-text">🖥️</div>
-                        <h4 class="font-bold text-sm mb-2">PC-based Solutions</h4>
-                        <p class="text-xs opacity-50">Offline and real-time configurations.</p>
-                    </div>
-                     <div>
-                        <div class="text-3xl mb-3 accent-text">☁️</div>
-                        <h4 class="font-bold text-sm mb-2">Cloud-based</h4>
-                        <p class="text-xs opacity-50">Scalable and accessible anywhere.</p>
-                    </div>
-                     <div>
-                        <div class="text-3xl mb-3 accent-text">⚡</div>
-                        <h4 class="font-bold text-sm mb-2">Edge Computing</h4>
-                        <p class="text-xs opacity-50">Future MCU implementations (STM32).</p>
-                    </div>
-                     <div>
-                        <div class="text-3xl mb-3 accent-text">🔄</div>
-                        <h4 class="font-bold text-sm mb-2">Vendor-Agnostic</h4>
-                        <p class="text-xs opacity-50">Seamless integration via OPC-DA/UA.</p>
                     </div>
                 </div>
             </div>
@@ -173,159 +154,38 @@
 
     <section id="education" class="py-24 px-6 max-w-7xl mx-auto">
         <h2 class="text-3xl font-bold mb-16 text-center">Educational & Research Ecosystem</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-            <div class="space-y-6 bento-card glass p-6 rounded-3xl">
-                <div class="img-container h-64"><img src="ml-kit.jpg" alt="MLK Hardware" class="h-full object-cover opacity-80"></div>
-                <div class="img-container h-48 border border-[#66FCF1]/20"><img src="aimx-ui.png" alt="AIMX Interface" class="h-full object-cover opacity-80"></div>
-                <div>
-                    <h4 class="text-2xl font-bold accent-text mb-2">MLK & AIMX Software</h4>
-                    <p class="text-sm opacity-70">Complete hands-on kit for machine learning, supported by the AIMX software interface for 39+ classification and 35+ regression models.</p>
+        
+        <div class="glass p-8 rounded-[3rem] border border-white/10 mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h3 class="text-3xl font-bold text-white">Machine Learning Kit (MLK)</h3>
+                    <p class="text-lg opacity-70">A complete hardware-software ecosystem designed for real-time AI education. Features the powerful AIMX software add-on.</p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mt-6">
+                        <div class="bg-black/40 p-4 rounded-xl">
+                            <h5 class="text-[#66FCF1] font-bold text-sm uppercase">Hardware Specs</h5>
+                            <ul class="text-xs opacity-70 mt-2 space-y-1">
+                                <li>• Cortex-M4F @ 168 MHz</li>
+                                <li>• Current Sensor: ±0.1% Accuracy</li>
+                                <li>• Vibration Sensor: 1.0 mg Res</li>
+                            </ul>
+                        </div>
+                        <div class="bg-black/40 p-4 rounded-xl">
+                            <h5 class="text-[#66FCF1] font-bold text-sm uppercase">AIMX Software</h5>
+                            <ul class="text-xs opacity-70 mt-2 space-y-1">
+                                <li>• 39+ Classification Models</li>
+                                <li>• 35+ Regression Models</li>
+                                <li>• No-Code Interface</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="space-y-6 bento-card glass p-6 rounded-3xl">
-                <div class="img-container h-64"><img src="dc-motor.jpg" alt="DCMK Hardware" class="h-full object-cover opacity-80"></div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="img-container h-32"><img src="fuzzy-ui.png" alt="Fuzzy Software" class="h-full object-cover opacity-80"></div>
-                    <div class="img-container h-32"><img src="mpc-ui.png" alt="MPC Software" class="h-full object-cover opacity-80"></div>
-                </div>
-                <div>
-                    <h4 class="text-2xl font-bold accent-text mb-2">DCMK & Laboratory Suites</h4>
-                    <p class="text-sm opacity-70">Licensed by IIT Bombay. Includes advanced Fuzzy Logic and MPC Laboratory Suite Ver 2.0 for real-time control experiments.</p>
+                <div class="flex flex-col gap-4">
+                     <div class="h-64 img-container rounded-2xl"><img src="ml-kit.jpg" alt="MLK Hardware" class="h-full object-cover"></div>
+                     <div class="h-48 img-container rounded-2xl"><img src="aimx-ui.png" alt="AIMX Interface" class="h-full object-cover"></div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="team" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold mb-4">Leadership & <span class="accent-text">Engineering Core</span></h2>
-            <p class="text-sm opacity-60 uppercase tracking-widest">Experts from IIT Bombay & Research Institutes</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition">
-                    <img src="team-nataraj.jpg" alt="Prof. Nataraj Paluri" class="w-full h-full object-cover">
-                </div>
-                <h4 class="text-xl font-bold text-white mb-1">Prof. (Retd.) Nataraj Paluri</h4>
-                <p class="text-xs accent-text uppercase tracking-wider mb-4">Founder & Technical Director</p>
-                <div class="h-px w-10 bg-white/10 mx-auto mb-4"></div>
-                <p class="text-xs opacity-60 mb-2 leading-relaxed">36+ years Faculty at IIT Bombay. Former consultant for Indian Railways and Gulf industries.</p>
-                <p class="text-[10px] opacity-40 uppercase tracking-widest">Control Systems • AI • Global Optimization</p>
-            </div>
-
-            <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition">
-                    <img src="team-satyavalli.jpg" alt="Ms. Satyavalli Paluri" class="w-full h-full object-cover">
-                </div>
-                <h4 class="text-xl font-bold text-white mb-1">Ms. Satyavalli Paluri</h4>
-                <p class="text-xs accent-text uppercase tracking-wider mb-4">Co-Founder & Operations Director</p>
-                <div class="h-px w-10 bg-white/10 mx-auto mb-4"></div>
-                <p class="text-xs opacity-60 mb-2 leading-relaxed">14+ years in Technology Management at IIT Bombay. Expert in GeM/MSME procurement.</p>
-                <p class="text-[10px] opacity-40 uppercase tracking-widest">Operations • Tech Admin • Physics</p>
-            </div>
-
-            <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition">
-                    <img src="team-sravya.jpg" alt="Dr. Sravya Paluri" class="w-full h-full object-cover">
-                </div>
-                <h4 class="text-xl font-bold text-white mb-1">Dr. Sravya Paluri</h4>
-                <p class="text-xs accent-text uppercase tracking-wider mb-4">COO & Scientific Officer</p>
-                <div class="h-px w-10 bg-white/10 mx-auto mb-4"></div>
-                <p class="text-xs opacity-60 mb-2 leading-relaxed">Expert in healthcare systems and research methodology with a background in Neurogenetics.</p>
-                <p class="text-[10px] opacity-40 uppercase tracking-widest">Scientific Rigor • Healthcare • Research</p>
-            </div>
-
-            <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition">
-                    <img src="team-karan.jpg" alt="Mr. Karan Chanchlani" class="w-full h-full object-cover">
-                </div>
-                <h4 class="text-lg font-bold text-white mb-1">Mr. Karan Chanchlani</h4>
-                <p class="text-xs accent-text uppercase tracking-wider mb-4">Lead R&D Engineer</p>
-                <p class="text-xs opacity-60 mb-2 leading-relaxed">Specialist in embedded systems, robotics, and control circuit design for product prototyping.</p>
-            </div>
-
-            <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition">
-                    <img src="team-ajit.jpg" alt="Mr. Ajit Zore" class="w-full h-full object-cover">
-                </div>
-                <h4 class="text-lg font-bold text-white mb-1">Mr. Ajit Zore</h4>
-                <p class="text-xs accent-text uppercase tracking-wider mb-4">Technical Specialist</p>
-                <p class="text-xs opacity-60 mb-2 leading-relaxed">8+ years combined experience at IIT Bombay and CARIMO in hardware testing and sourcing.</p>
-            </div>
-
-            <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition">
-                    <img src="team-maryam.jpg" alt="Miss Maryam Bahlooli" class="w-full h-full object-cover">
-                </div>
-                <h4 class="text-lg font-bold text-white mb-1">Miss Maryam Bahlooli</h4>
-                <p class="text-xs accent-text uppercase tracking-wider mb-4">AI Research Intern</p>
-                <p class="text-xs opacity-60 mb-2 leading-relaxed">Focusing on Artificial Intelligence, Machine Learning algorithms, and Data Science applications.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 bg-[#0B0C10] relative border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-6">
-             <h2 class="text-3xl font-bold mb-16 text-center">Contact Us</h2>
-             
-             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <div class="glass p-8 rounded-3xl border-t-4 border-[#66FCF1]">
-                    <h4 class="text-lg font-bold mb-4 flex items-center gap-3">
-                        <span class="text-2xl">🏢</span> Mumbai Headquarters
-                    </h4>
-                    <p class="text-sm opacity-70 leading-relaxed">
-                        #203, Palms-1, Royal Palms Estate,<br>
-                        Aarey Colony, Goregaon (E),<br>
-                        Mumbai - 400065
-                    </p>
-                </div>
-                <div class="glass p-8 rounded-3xl border-t-4 border-white/20">
-                    <h4 class="text-lg font-bold mb-4 flex items-center gap-3">
-                        <span class="text-2xl">🎓</span> SINE Branch
-                    </h4>
-                    <p class="text-sm opacity-70 leading-relaxed">
-                        5th floor, SINE, RBTIC,<br>
-                        IIT Bombay, Powai,<br>
-                        Mumbai 400076
-                    </p>
-                </div>
-                <div class="glass p-8 rounded-3xl border-t-4 border-white/20">
-                    <h4 class="text-lg font-bold mb-4 flex items-center gap-3">
-                        <span class="text-2xl">🚀</span> I-Hub Branch
-                    </h4>
-                    <p class="text-sm opacity-70 leading-relaxed">
-                        2nd Floor, iHub,<br>
-                        Ahmedabad, 380015<br>
-                         Gujarat
-                    </p>
-                </div>
-             </div>
-
-             <div class="text-center">
-                <a href="mailto:contact@carimo.tech" class="glass inline-block px-10 py-4 rounded-full text-xl font-bold accent-text hover:bg-[#66FCF1]/10 transition flex items-center gap-3 mx-auto">
-                    <span>✉️</span> contact@carimo.tech
-                </a>
-             </div>
-        </div>
-    </section>
-
-    <section class="py-10 bg-[#1F2833]/50 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-[10px] uppercase tracking-[0.3em] mb-8 opacity-50">Powered and Incubated By</p>
-            <div class="flex flex-wrap justify-center items-center gap-12 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500">
-                <img src="sine-logo.png" alt="SINE Logo" class="h-12 w-auto object-contain">
-                <img src="iitb-logo.png" alt="IIT Bombay Logo" class="h-14 w-auto object-contain">
-                <img src="ihub-logo.png" alt="i-Hub Ahmedabad Logo" class="h-12 w-auto object-contain"> 
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-6 bg-[#0B0C10] text-center opacity-30 text-[10px] uppercase tracking-widest border-t border-white/5">
-        CARIMO Technologies Private Limited © 2026. All Rights Reserved.
-    </footer>
-
-</body>
-</html>
+        <div class="glass p-8 rounded-[3rem] border border-white/10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
