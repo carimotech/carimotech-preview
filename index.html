@@ -3,146 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CARIMO Technologies | Deep Tech & Industrial AI</title>
+    <title>CARIMO Technologies Private Limited | Deep Tech & Industrial AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #0B0C10; color: #C5C6C7; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .glass { background: rgba(31, 40, 51, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(102, 252, 241, 0.1); }
         .accent-text { color: #66FCF1; }
         .accent-bg { background-color: #66FCF1; color: #0B0C10; }
-        .bento-card { transition: transform 0.3s ease, border 0.3s ease; border: 1px solid transparent; }
+        .bento-card { transition: transform 0.3s ease; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; }
         .bento-card:hover { transform: translateY(-5px); border-color: #66FCF1; }
         .gradient-text { background: linear-gradient(90deg, #66FCF1, #45A29E); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .img-container { background: #1F2833; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     </style>
 </head>
 <body>
 
     <nav class="fixed w-full z-50 glass py-4 px-6 flex justify-between items-center border-b border-white/5">
-        <div class="text-xl font-black tracking-tighter italic">CARIMO <span class="accent-text">TECHNOLOGIES</span></div>
-        <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-widest">
-            <a href="#solutions" class="hover:accent-text transition">Solutions</a>
-            <a href="#products" class="hover:accent-text transition">Kits & Labs</a>
-            <a href="#about" class="hover:accent-text transition">About Us</a>
-            <a href="#contact" class="accent-bg px-4 py-1 rounded-full">Contact</a>
+        <div class="flex flex-col">
+            <span class="text-xl font-black tracking-tighter italic leading-none">CARIMO <span class="accent-text">TECHNOLOGIES</span></span>
+            <span class="text-[10px] opacity-40 uppercase tracking-widest mt-1">Private Limited</span>
+        </div>
+        <div class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest">
+            <a href="#consulting" class="hover:accent-text transition">Consulting</a>
+            <a href="#capmac" class="hover:accent-text transition">CAPMAC AI</a>
+            <a href="#education" class="hover:accent-text transition">Edu Products</a>
+            <a href="#locations" class="hover:accent-text transition">Locations</a>
         </div>
     </nav>
 
-    <header class="min-h-screen flex flex-col justify-center items-center px-6 text-center border-b border-white/5">
-        <div class="inline-block px-4 py-1 mb-6 rounded-full border border-[#66FCF1]/30 bg-[#66FCF1]/10 text-xs font-bold accent-text uppercase tracking-widest">
-            Incubated at SINE, IIT Bombay
+    <header class="min-h-screen flex flex-col justify-center items-center px-6 text-center">
+        <div class="flex items-center gap-6 mb-8 opacity-80">
+            <img src="sine-logo.png" alt="SINE Logo" class="h-10">
+            <div class="h-10 w-px bg-white/20"></div>
+            <img src="iitb-logo.png" alt="IIT Bombay Logo" class="h-12">
         </div>
-        <h1 class="text-5xl md:text-8xl font-bold mb-6 tracking-tight">Bridging Theory & <br><span class="gradient-text">Industrial AI</span></h1>
-        <p class="text-lg md:text-xl max-w-2xl opacity-70 mb-10 leading-relaxed">
-            Leading deep-tech platforms for control systems, AI, and industrial automation. Founded by (Retd.) Prof. Nataraj Paluri of IIT Bombay.
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight leading-tight">Control, AI, Real-time Systems, <br><span class="gradient-text">Implementation, Modelling and Optimization</span></h1>
+        <p class="text-sm uppercase tracking-[0.4em] accent-text mb-10 opacity-70">CARIMO Technologies Private Limited</p>
+        <p class="text-lg max-w-3xl opacity-70 leading-relaxed mb-10">
+            Incubated at SINE, IIT Bombay. We deliver truly customized solutions built on cutting-edge R&D in AI, control systems, RAG, and video analytics.
         </p>
-        <div class="flex flex-col md:row gap-4">
-            <a href="#products" class="accent-bg px-10 py-4 rounded-full font-bold text-lg hover:shadow-[0_0_20px_rgba(102,252,241,0.4)] transition">Explore the Ecosystem</a>
-            <a href="#solutions" class="border border-white/20 px-10 py-4 rounded-full font-bold text-lg hover:bg-white/5 transition">Industrial Solutions</a>
-        </div>
     </header>
 
-    <section class="py-12 bg-[#1F2833]/30 border-b border-white/5 flex flex-wrap justify-center gap-16 items-center opacity-40 grayscale hover:grayscale-0 transition duration-500">
-        <span class="text-xl font-black">SINE</span>
-        <span class="text-xl font-black">IIT BOMBAY</span>
-        <span class="text-xl font-black">DPIIT AI STARTUP</span>
-        <span class="text-xl font-black">I-HUB</span>
-    </section>
-
-    <section id="products" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold mb-4">A Modular <span class="accent-text">Deep-Tech</span> Ecosystem</h2>
-            <p class="opacity-60">High-performance hardware foundation with specialized software intelligence.</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-            <div class="glass p-10 rounded-[2.5rem] bento-card md:col-span-8 relative overflow-hidden">
-                <div class="relative z-10">
-                    <span class="text-xs font-bold uppercase tracking-widest accent-text">Core Learning Platform</span>
-                    <h3 class="text-4xl font-bold mt-2 mb-6">Machine Learning Kit (MLK)</h3>
-                    <p class="opacity-80 mb-8 max-w-lg">
-                        Transform theoretical learning into practical applications with high-fidelity sensors and ARM Cortex-M4 precision.
-                    </p>
-                    <div class="flex flex-wrap gap-4 mb-8">
-                        <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Vibration Analysis</span>
-                        <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Anomaly Detection</span>
-                        <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Real-Time Data</span>
-                    </div>
-                    <div class="p-6 rounded-2xl bg-gradient-to-br from-[#66FCF1]/10 to-transparent border border-[#66FCF1]/20">
-                        <h4 class="font-bold mb-2 flex items-center gap-2">
-                            <span class="accent-text">✨</span> Premium Add-on: AIMX Software
-                        </h4>
-                        <p class="text-sm opacity-70">39+ classification and 35+ regression models for deep real-time intelligence.</p>
-                    </div>
-                </div>
+    <section id="consulting" class="py-24 px-6 max-w-7xl mx-auto">
+        <h2 class="text-sm font-bold accent-text uppercase tracking-widest mb-16 text-center">Consulting Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass p-8 rounded-3xl bento-card">
+                <h4 class="text-xl font-bold mb-4 accent-text">Advanced AI Agents & Analytics</h4>
+                <p class="text-sm opacity-60 leading-relaxed">Custom Agentic RAG Systems & AI-Powered Video Analytics solutions for education, healthcare, agriculture, administration, and cultural heritage.</p>
             </div>
-
-            <div class="glass p-10 rounded-[2.5rem] bento-card md:col-span-4 flex flex-col justify-between">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-widest accent-text">Licensed by IIT Bombay</span>
-                    <h3 class="text-3xl font-bold mt-2 mb-6">DC Motor Kit</h3>
-                    <p class="text-sm opacity-70 mb-8">Exclusive IIT Bombay tech for advanced motor control experiments.</p>
-                </div>
-                <div class="space-y-3">
-                    <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-xs font-bold">Fuzzy Logic Control Lab Add-on</div>
-                    <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-xs font-bold">MPC Control Lab Ver 2.0 Add-on</div>
-                </div>
+            <div class="glass p-8 rounded-3xl bento-card">
+                <h4 class="text-xl font-bold mb-4 accent-text">Industrial Solutions</h4>
+                <p class="text-sm opacity-60 leading-relaxed">AI-based predictive maintenance strategies, advanced controller design, and PID control loop tuning and optimization.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl bento-card">
+                <h4 class="text-xl font-bold mb-4 accent-text">Specialized Applications</h4>
+                <p class="text-sm opacity-60 leading-relaxed">Customized solutions for automated document retrieval, unique industrial automation, and defence sector challenges.</p>
             </div>
         </div>
     </section>
 
-    <section id="solutions" class="py-24 bg-[#0B0C10] relative">
+    <section id="capmac" class="py-24 bg-[#1F2833]/20 border-y border-white/5">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <h2 class="text-4xl font-bold mb-16 text-center">CAPMAC Industrial AI Suite</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24 items-center">
+                <div class="img-container h-80">
+                    <img src="rag-ui.png" alt="CAPMAC Agentic RAG Interface" class="h-full w-full object-cover">
+                </div>
                 <div>
-                    <h2 class="text-5xl font-bold mb-8">CAPMAC <br><span class="accent-text">Industrial Suite</span></h2>
-                    <p class="text-lg opacity-70 mb-10 leading-relaxed">
-                        Our suite of advanced algorithms for industrial-grade process optimization and predictive maintenance. Trusted by industry giants.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="p-4 border-l-2 border-[#66FCF1] bg-white/5">
-                            <h4 class="font-bold text-sm mb-1 uppercase tracking-tighter">Video Analytics</h4>
-                            <p class="text-xs opacity-50">CUDA-optimized processing.</p>
-                        </div>
-                        <div class="p-4 border-l-2 border-[#66FCF1] bg-white/5">
-                            <h4 class="font-bold text-sm mb-1 uppercase tracking-tighter">Agentic RAG</h4>
-                            <p class="text-xs opacity-50">Enterprise knowledge AI.</p>
-                        </div>
-                        <div class="p-4 border-l-2 border-[#66FCF1] bg-white/5">
-                            <h4 class="font-bold text-sm mb-1 uppercase tracking-tighter">AT-PID Control</h4>
-                            <p class="text-xs opacity-50">Proven with BPCL.</p>
-                        </div>
-                        <div class="p-4 border-l-2 border-[#66FCF1] bg-white/5">
-                            <h4 class="font-bold text-sm mb-1 uppercase tracking-tighter">Predictive Maint.</h4>
-                            <p class="text-xs opacity-50">Anomaly detection.</p>
-                        </div>
+                    <h3 class="text-2xl font-bold mb-6">Agentic RAG Systems</h3>
+                    <ul class="space-y-4 text-sm opacity-70">
+                        <li><strong>Advanced AI Architecture:</strong> Combines LLMs with custom domain-specific data for autonomous reasoning.</li>
+                        <li><strong>Natural Language Interface:</strong> Allows non-technical staff to query complex datasets across healthcare, agriculture, and cultural heritage.</li>
+                        <li><strong>Security:</strong> Utilizes secure, locally-running LLMs for enterprise-grade reliability.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="glass p-10 rounded-3xl">
+                    <h3 class="text-xl font-bold mb-6">Predictive Maintenance (PdM)</h3>
+                    <div class="space-y-4 text-sm opacity-70 mb-8">
+                        <p><strong>Failure Prediction:</strong> Identifies equipment failures before they occur using real-time and historical data.</p>
+                        <p><strong>Proven Success:</strong> Validated through tests with a German startup and BPCL.</p>
                     </div>
                 </div>
-                <div class="relative">
-                    <div class="glass p-10 rounded-[3rem] border-l-8 border-[#66FCF1] shadow-2xl">
-                        <div class="text-5xl accent-text mb-6">"</div>
-                        <p class="text-xl italic opacity-90 leading-relaxed mb-8">
-                            Successfully tested with DCS systems like Yokogawa and Honeywell at BPCL Mahul Refinery and Aditya Birla Group.
-                        </p>
-                        <div class="font-bold uppercase tracking-widest text-xs opacity-50">— Field Validated Results</div>
+                <div class="glass p-10 rounded-3xl">
+                    <h3 class="text-xl font-bold mb-6">Autotuning PID (AT-PID)</h3>
+                    <div class="space-y-4 text-sm opacity-70">
+                        <p><strong>Automatic Optimization:</strong> Real-time optimization of PID loops (level, flow, temp) reducing costs.</p>
+                        <p><strong>Industrial Integration:</strong> Successfully tested with Yokogawa and Honeywell DCS at BPCL and Aditya Birla.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="about" class="py-24 border-t border-white/5">
+    <section id="education" class="py-24 px-6 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-bold mb-16 text-center">Educational & Research Ecosystem</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div class="space-y-6">
+                <div class="img-container h-64"><img src="ml-kit.jpg" alt="MLK Hardware"></div>
+                <div class="img-container h-48 border border-[#66FCF1]/20"><img src="aimx-ui.png" alt="AIMX Interface"></div>
+                <h4 class="text-2xl font-bold accent-text">MLK & AIMX Software</h4>
+                <p class="text-sm opacity-70">Complete hands-on kit for machine learning, supported by the AIMX software interface for classification and regression tasks.</p>
+            </div>
+            <div class="space-y-6">
+                <div class="img-container h-64"><img src="dc-motor.jpg" alt="DCMK Hardware"></div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="img-container h-32"><img src="fuzzy-ui.png" alt="Fuzzy Software"></div>
+                    <div class="img-container h-32"><img src="mpc-ui.png" alt="MPC Software"></div>
+                </div>
+                <h4 class="text-2xl font-bold accent-text">DCMK & Laboratory Suites</h4>
+                <p class="text-sm opacity-70">Licensed by IIT Bombay. Includes advanced Fuzzy Logic and MPC Laboratory Suite Ver 2.0 for real-time control experiments.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="locations" class="py-24 bg-[#1F2833]/10">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-6">The CARIMO Team</h2>
-            <p class="max-w-3xl mx-auto opacity-70 mb-16 leading-relaxed">
-                Founded by <span class="accent-text">Prof. Nataraj Paluri</span>, bringing 36+ years of IIT Bombay research to industrial application. Supported by <span class="accent-text">Ms. Satyavalli Paluri</span> with 14+ years of tech management expertise.
-            </p>
-            <div id="contact" class="flex flex-col items-center gap-4">
-                <a href="mailto:contact@carimotech.com" class="text-2xl font-bold underline decoration-[#66FCF1] hover:accent-text transition">contact@carimotech.com</a>
-                <div class="text-sm opacity-40 uppercase tracking-[0.3em] mt-4">
-                    Mumbai HQ | SINE IIT Bombay | I-Hub Ahmedabad
+            <h2 class="text-3xl font-bold mb-16">Our Locations</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="img-container h-48 mb-4"><img src="royal-palms.jpg" alt="Royal Palms Office"></div>
+                    <p class="text-xs font-bold uppercase">Mumbai HQ</p>
+                    <p class="text-sm opacity-50">Royal Palms Office</p>
+                </div>
+                <div>
+                    <div class="img-container h-48 mb-4"><img src="iitb-entrance.jpg" alt="IIT-B Entrance"></div>
+                    <p class="text-xs font-bold uppercase">Incubation Center</p>
+                    <p class="text-sm opacity-50">SINE, IIT Bombay</p>
+                </div>
+                <div>
+                    <div class="img-container h-48 mb-4"><img src="ihub-office.jpg" alt="i-Hub Ahmedabad"></div>
+                    <p class="text-xs font-bold uppercase">Research Hub</p>
+                    <p class="text-sm opacity-50">i-Hub Ahmedabad</p>
                 </div>
             </div>
         </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/5 text-center opacity-40 text-[10px] uppercase tracking-widest">
+        CARIMO Technologies Private Limited © 2026
     </footer>
 
 </body>
