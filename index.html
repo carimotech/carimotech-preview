@@ -5,17 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CARIMO Technologies Pvt Ltd | Industrial AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Simple script to handle Brochure downloads (placeholder)
+        function downloadBrochure(kitName) {
+            alert("Brochure for " + kitName + " would download here. Please link your PDF file in the href attribute.");
+        }
+    </script>
     <style>
         body { background-color: #0B0C10; color: #C5C6C7; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .glass { background: rgba(31, 40, 51, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(102, 252, 241, 0.1); }
         .accent-text { color: #66FCF1; }
         .accent-bg { background-color: #66FCF1; color: #0B0C10; }
+        .accent-border { border-color: #66FCF1; }
         .gradient-text { background: linear-gradient(90deg, #66FCF1, #45A29E); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .bento-card { transition: transform 0.3s ease, border-color 0.3s ease; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; }
         .bento-card:hover { transform: translateY(-5px); border-color: #66FCF1; }
         .img-container { background: #1F2833; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
-        /* Debugger: Highlights missing images with a red box */
+        /* Debugger for missing images */
         img[alt]:after { display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #2d1b1b; color: #ff9999; content: attr(alt); text-align: center; padding-top: 20px; border: 2px dashed #ff5555; }
+        
+        /* New Button Styles */
+        .btn-glow:hover { box-shadow: 0 0 15px rgba(102, 252, 241, 0.4); }
     </style>
 </head>
 <body>
@@ -116,75 +126,90 @@
     <section id="education" class="py-24 px-6 max-w-7xl mx-auto">
         <h2 class="text-3xl font-bold mb-16 text-center text-white">Educational & Research Ecosystem</h2>
         
-        <div class="glass rounded-[3rem] border border-white/10 mb-20 overflow-hidden">
-            <div class="bg-white/5 p-8 border-b border-white/5 text-center">
-                <h3 class="text-4xl font-bold text-white mb-2">Machine Learning Kit (MLK)</h3>
-                <p class="text-lg opacity-60">A complete ecosystem for real-time AI education.</p>
-            </div>
-            
+        <div class="glass rounded-[2rem] border border-white/10 mb-20 overflow-hidden">
             <div class="grid grid-cols-1 lg:grid-cols-2">
-                <div class="p-10 border-r border-white/5 flex flex-col">
-                    <div class="h-64 img-container rounded-2xl mb-8"><img src="ml-kit.jpg" alt="MISSING: ml-kit.jpg" class="h-full object-cover"></div>
-                    <h4 class="text-xl font-bold accent-text mb-4">The Hardware</h4>
-                    <p class="text-sm text-gray-400 mb-6">Robust embedded hardware designed for data acquisition.</p>
-                    <div class="bg-black/40 p-5 rounded-xl mt-auto">
-                        <ul class="text-xs text-gray-300 space-y-2">
-                            <li class="flex justify-between border-b border-white/10 pb-1"><span>Processor</span> <span class="text-white">Cortex-M4F @ 168 MHz</span></li>
-                            <li class="flex justify-between border-b border-white/10 pb-1"><span>Current Sensor</span> <span class="text-white">±0.1% Accuracy</span></li>
-                            <li class="flex justify-between pt-1"><span>Vibration</span> <span class="text-white">1.0 mg Resolution</span></li>
-                        </ul>
+                <div class="bg-[#1F2833] relative p-8 flex items-center justify-center">
+                    <div class="relative w-full max-w-md h-80">
+                         <div class="absolute top-0 right-0 w-3/4 h-3/4 z-10 rounded-xl shadow-2xl overflow-hidden border border-white/20">
+                             <img src="ml-kit.jpg" alt="MISSING: ml-kit.jpg" class="w-full h-full object-cover">
+                         </div>
+                         <div class="absolute bottom-0 left-0 w-3/4 h-3/4 z-20 rounded-xl shadow-2xl overflow-hidden border border-[#66FCF1]/40">
+                             <img src="aimx-ui.png" alt="MISSING: aimx-ui.png" class="w-full h-full object-cover">
+                         </div>
                     </div>
                 </div>
-
-                <div class="p-10 flex flex-col bg-[#66FCF1]/5">
-                    <div class="h-64 img-container rounded-2xl mb-8 border border-[#66FCF1]/20"><img src="aimx-ui.png" alt="MISSING: aimx-ui.png" class="h-full object-cover"></div>
-                    <h4 class="text-xl font-bold accent-text mb-4">The Software: AIMX Add-on</h4>
-                    <p class="text-sm text-gray-400 mb-6">Powerful no-code interface for training and deployment.</p>
-                    <div class="bg-black/40 p-5 rounded-xl mt-auto">
-                         <ul class="text-xs text-gray-300 space-y-2">
-                            <li class="flex justify-between border-b border-white/10 pb-1"><span>Classification</span> <span class="text-white">39+ Pre-built Models</span></li>
-                            <li class="flex justify-between border-b border-white/10 pb-1"><span>Regression</span> <span class="text-white">35+ Algorithms</span></li>
-                            <li class="flex justify-between pt-1"><span>Interface</span> <span class="text-white">No-Code / Drag & Drop</span></li>
-                        </ul>
+                
+                <div class="p-10 flex flex-col justify-center">
+                    <h3 class="text-3xl font-bold text-white mb-2">Machine Learning Kit (MLK)</h3>
+                    <p class="text-sm text-gray-400 mb-8">A complete ecosystem for real-time AI education, bridging the gap between embedded hardware and intelligent software.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h5 class="accent-text text-xs font-bold uppercase tracking-widest mb-3 border-b border-white/10 pb-2">Hardware Core</h5>
+                            <ul class="text-xs text-gray-300 space-y-2">
+                                <li>• Cortex-M4F @ 168 MHz</li>
+                                <li>• Current Sensor: ±0.1% Accuracy</li>
+                                <li>• Vibration Sensor: 1.0 mg Res</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="accent-text text-xs font-bold uppercase tracking-widest mb-3 border-b border-white/10 pb-2">AIMX Software</h5>
+                            <ul class="text-xs text-gray-300 space-y-2">
+                                <li>• 39+ Classification Models</li>
+                                <li>• 35+ Regression Models</li>
+                                <li>• No-Code Drag & Drop</li>
+                            </ul>
+                        </div>
                     </div>
+                    
+                    <a href="path/to/mlk-brochure.pdf" target="_blank" class="glass w-full py-4 rounded-xl text-center font-bold text-white hover:bg-[#66FCF1] hover:text-[#0B0C10] transition btn-glow flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Download MLK Brochure
+                    </a>
                 </div>
             </div>
         </div>
 
-        <div class="glass rounded-[3rem] border border-white/10 overflow-hidden">
-            <div class="bg-white/5 p-8 border-b border-white/5 text-center">
-                <h3 class="text-4xl font-bold text-white mb-2">DC Motor Kit (DCMK)</h3>
-                <p class="text-lg opacity-60">The gold standard for control systems laboratories.</p>
-            </div>
-            
+        <div class="glass rounded-[2rem] border border-white/10 overflow-hidden">
             <div class="grid grid-cols-1 lg:grid-cols-2">
-                <div class="p-10 border-r border-white/5 flex flex-col">
-                    <div class="h-64 img-container rounded-2xl mb-8"><img src="dc-motor.jpg" alt="MISSING: dc-motor.jpg" class="h-full object-cover"></div>
-                    <h4 class="text-xl font-bold accent-text mb-4">The Hardware</h4>
-                    <p class="text-sm text-gray-400 mb-6">Precision-engineered motor control unit licensed by IIT Bombay.</p>
-                    <div class="bg-black/40 p-5 rounded-xl mt-auto">
-                        <ul class="text-xs text-gray-300 space-y-2">
-                            <li class="flex justify-between border-b border-white/10 pb-1"><span>License</span> <span class="text-white">IIT Bombay Official</span></li>
-                            <li class="flex justify-between border-b border-white/10 pb-1"><span>Control</span> <span class="text-white">Precision Encoder</span></li>
-                            <li class="flex justify-between pt-1"><span>Usage</span> <span class="text-white">Undergraduate & Research</span></li>
-                        </ul>
+                <div class="bg-[#1F2833] relative p-8 flex items-center justify-center">
+                    <div class="relative w-full max-w-md h-80">
+                         <div class="absolute top-0 right-0 w-3/4 h-3/4 z-10 rounded-xl shadow-2xl overflow-hidden border border-white/20">
+                             <img src="dc-motor.jpg" alt="MISSING: dc-motor.jpg" class="w-full h-full object-cover">
+                         </div>
+                         <div class="absolute bottom-0 left-0 w-3/4 h-3/4 z-20 rounded-xl shadow-2xl overflow-hidden border border-[#66FCF1]/40">
+                             <img src="fuzzy-ui.png" alt="MISSING: fuzzy-ui.png" class="w-full h-full object-cover">
+                         </div>
                     </div>
                 </div>
 
-                <div class="p-10 flex flex-col bg-[#66FCF1]/5">
-                    <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="h-32 img-container rounded-xl border border-[#66FCF1]/20"><img src="fuzzy-ui.png" alt="MISSING: fuzzy-ui.png" class="h-full object-cover"></div>
-                        <div class="h-32 img-container rounded-xl border border-[#66FCF1]/20"><img src="mpc-ui.png" alt="MISSING: mpc-ui.png" class="h-full object-cover"></div>
+                <div class="p-10 flex flex-col justify-center">
+                    <h3 class="text-3xl font-bold text-white mb-2">DC Motor Kit (DCMK)</h3>
+                    <p class="text-sm text-gray-400 mb-8">The gold standard for control systems laboratories, licensed by IIT Bombay for undergraduate and research applications.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h5 class="accent-text text-xs font-bold uppercase tracking-widest mb-3 border-b border-white/10 pb-2">Hardware Core</h5>
+                            <ul class="text-xs text-gray-300 space-y-2">
+                                <li>• IIT Bombay Official License</li>
+                                <li>• Precision Optical Encoder</li>
+                                <li>• Industrial Grade Chassis</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="accent-text text-xs font-bold uppercase tracking-widest mb-3 border-b border-white/10 pb-2">Software Suites</h5>
+                            <ul class="text-xs text-gray-300 space-y-2">
+                                <li>• Fuzzy Logic (Mamdani/Sugeno)</li>
+                                <li>• MPC Real-time Solver</li>
+                                <li>• 3D Surface Visualization</li>
+                            </ul>
+                        </div>
                     </div>
-                    <h4 class="text-xl font-bold accent-text mb-4">The Software: Research Suites</h4>
-                    <p class="text-sm text-gray-400 mb-6">Advanced add-ons for modern control theory experimentation.</p>
-                    <div class="bg-black/40 p-5 rounded-xl mt-auto">
-                         <ul class="text-xs text-gray-300 space-y-2">
-                            <li class="flex justify-between border-b border-white/10 pb-1"><span>Fuzzy Logic</span> <span class="text-white">Mamdani & Sugeno Engines</span></li>
-                            <li class="flex justify-between border-b border-white/10 pb-1"><span>MPC Suite</span> <span class="text-white">Real-time Solvers</span></li>
-                            <li class="flex justify-between pt-1"><span>Vis</span> <span class="text-white">3D Surface & Horizon View</span></li>
-                        </ul>
-                    </div>
+                    
+                    <a href="path/to/dcmk-brochure.pdf" target="_blank" class="glass w-full py-4 rounded-xl text-center font-bold text-white hover:bg-[#66FCF1] hover:text-[#0B0C10] transition btn-glow flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Download DCMK Brochure
+                    </a>
                 </div>
             </div>
         </div>
@@ -195,58 +220,30 @@
             <h2 class="text-4xl font-bold mb-4 text-white">Leadership & <span class="accent-text">Engineering Core</span></h2>
             <p class="text-sm opacity-60 uppercase tracking-widest">Experts from IIT Bombay & Research Institutes</p>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition">
-                    <img src="team-nataraj.jpg" alt="User Photo" class="w-full h-full object-cover">
-                </div>
-                <h4 class="text-xl font-bold text-white mb-1">Prof. (Retd.) Nataraj Paluri</h4>
-                <p class="text-xs accent-text uppercase tracking-wider mb-4">Founder & Technical Director</p>
-                <div class="h-px w-10 bg-white/10 mx-auto mb-4"></div>
-                <p class="text-xs text-gray-400 mb-2 leading-relaxed">36+ years Faculty at IIT Bombay. Former consultant for Indian Railways and Gulf industries.</p>
+                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition"><img src="team-nataraj.jpg" alt="User Photo" class="w-full h-full object-cover"></div>
+                <h4 class="text-xl font-bold text-white mb-1">Prof. (Retd.) Nataraj Paluri</h4><p class="text-xs accent-text uppercase tracking-wider mb-4">Founder & Technical Director</p><p class="text-xs text-gray-400">36+ years Faculty at IIT Bombay.</p>
             </div>
             <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition">
-                    <img src="team-satyavalli.jpg" alt="User Photo" class="w-full h-full object-cover">
-                </div>
-                <h4 class="text-xl font-bold text-white mb-1">Ms. Satyavalli Paluri</h4>
-                <p class="text-xs accent-text uppercase tracking-wider mb-4">Co-Founder & Ops Director</p>
-                <div class="h-px w-10 bg-white/10 mx-auto mb-4"></div>
-                <p class="text-xs text-gray-400 mb-2 leading-relaxed">14+ years in Technology Management at IIT Bombay. Expert in GeM/MSME procurement.</p>
+                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition"><img src="team-satyavalli.jpg" alt="User Photo" class="w-full h-full object-cover"></div>
+                <h4 class="text-xl font-bold text-white mb-1">Ms. Satyavalli Paluri</h4><p class="text-xs accent-text uppercase tracking-wider mb-4">Co-Founder & Ops Director</p><p class="text-xs text-gray-400">14+ years in Technology Management.</p>
             </div>
             <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition">
-                    <img src="team-sravya.jpg" alt="User Photo" class="w-full h-full object-cover">
-                </div>
-                <h4 class="text-xl font-bold text-white mb-1">Dr. Sravya Paluri</h4>
-                <p class="text-xs accent-text uppercase tracking-wider mb-4">COO & Scientific Officer</p>
-                <div class="h-px w-10 bg-white/10 mx-auto mb-4"></div>
-                <p class="text-xs text-gray-400 mb-2 leading-relaxed">Expert in healthcare systems and research methodology.</p>
+                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition"><img src="team-sravya.jpg" alt="User Photo" class="w-full h-full object-cover"></div>
+                <h4 class="text-xl font-bold text-white mb-1">Dr. Sravya Paluri</h4><p class="text-xs accent-text uppercase tracking-wider mb-4">COO & Scientific Officer</p><p class="text-xs text-gray-400">Expert in healthcare systems.</p>
             </div>
             <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition">
-                    <img src="team-karan.jpg" alt="User Photo" class="w-full h-full object-cover">
-                </div>
-                <h4 class="text-lg font-bold text-white mb-1">Mr. Karan Chanchlani</h4>
-                <p class="text-xs accent-text uppercase tracking-wider mb-4">Lead R&D Engineer</p>
-                <p class="text-xs text-gray-400 mb-2 leading-relaxed">Specialist in embedded systems, robotics, and control circuit design.</p>
+                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition"><img src="team-karan.jpg" alt="User Photo" class="w-full h-full object-cover"></div>
+                <h4 class="text-lg font-bold text-white mb-1">Mr. Karan Chanchlani</h4><p class="text-xs accent-text uppercase tracking-wider mb-4">Lead R&D Engineer</p><p class="text-xs text-gray-400">Embedded systems & robotics.</p>
             </div>
             <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition">
-                    <img src="team-ajit.jpg" alt="User Photo" class="w-full h-full object-cover">
-                </div>
-                <h4 class="text-lg font-bold text-white mb-1">Mr. Ajit Zore</h4>
-                <p class="text-xs accent-text uppercase tracking-wider mb-4">Technical Specialist</p>
-                <p class="text-xs text-gray-400 mb-2 leading-relaxed">8+ years combined experience at IIT Bombay and CARIMO.</p>
+                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition"><img src="team-ajit.jpg" alt="User Photo" class="w-full h-full object-cover"></div>
+                <h4 class="text-lg font-bold text-white mb-1">Mr. Ajit Zore</h4><p class="text-xs accent-text uppercase tracking-wider mb-4">Technical Specialist</p><p class="text-xs text-gray-400">8+ years hardware experience.</p>
             </div>
             <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition">
-                    <img src="team-maryam.jpg" alt="User Photo" class="w-full h-full object-cover">
-                </div>
-                <h4 class="text-lg font-bold text-white mb-1">Miss Maryam Bahlooli</h4>
-                <p class="text-xs accent-text uppercase tracking-wider mb-4">AI Research Intern</p>
-                <p class="text-xs text-gray-400 mb-2 leading-relaxed">Focusing on Artificial Intelligence and ML algorithms.</p>
+                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition"><img src="team-maryam.jpg" alt="User Photo" class="w-full h-full object-cover"></div>
+                <h4 class="text-lg font-bold text-white mb-1">Miss Maryam Bahlooli</h4><p class="text-xs accent-text uppercase tracking-wider mb-4">AI Research Intern</p><p class="text-xs text-gray-400">AI and ML algorithms.</p>
             </div>
         </div>
     </section>
@@ -276,13 +273,19 @@
         </div>
     </section>
 
-    <section class="py-12 bg-[#F5F5F5] text-center">
+    <section class="py-16 bg-[#0B0C10] text-center border-t border-white/5">
         <div class="max-w-7xl mx-auto px-6">
-            <p class="text-[10px] uppercase tracking-[0.3em] mb-8 opacity-60 text-black font-bold">Powered and Incubated By</p>
-            <div class="flex flex-wrap justify-center items-center gap-12 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition duration-500">
-                <img src="sine-logo.png" alt="MISSING: sine-logo.png" class="h-16 w-auto object-contain">
-                <img src="iitb-logo.png" alt="MISSING: iitb-logo.png" class="h-16 w-auto object-contain">
-                <img src="ihub-logo.png" alt="MISSING: ihub-logo.png" class="h-16 w-auto object-contain">
+            <p class="text-[10px] uppercase tracking-[0.3em] mb-10 opacity-60 text-white font-bold">Powered and Incubated By</p>
+            <div class="flex flex-wrap justify-center items-center gap-8">
+                <div class="bg-white rounded-xl p-4 w-32 h-20 flex items-center justify-center opacity-80 hover:opacity-100 transition hover:scale-105 duration-300">
+                    <img src="sine-logo.png" alt="MISSING: sine-logo.png" class="max-h-full max-w-full object-contain">
+                </div>
+                <div class="bg-white rounded-xl p-4 w-32 h-20 flex items-center justify-center opacity-80 hover:opacity-100 transition hover:scale-105 duration-300">
+                    <img src="iitb-logo.png" alt="MISSING: iitb-logo.png" class="max-h-full max-w-full object-contain">
+                </div>
+                <div class="bg-white rounded-xl p-4 w-32 h-20 flex items-center justify-center opacity-80 hover:opacity-100 transition hover:scale-105 duration-300">
+                    <img src="ihub-logo.png" alt="MISSING: ihub-logo.png" class="max-h-full max-w-full object-contain">
+                </div>
             </div>
         </div>
     </section>
