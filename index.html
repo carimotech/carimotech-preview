@@ -1,265 +1,951 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CARIMO Technologies Pvt Ltd | Industrial AI</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* CORE STYLES */
-        body { background-color: #0B0C10; color: #C5C6C7; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .glass { background: rgba(31, 40, 51, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(102, 252, 241, 0.1); }
-        .accent-text { color: #66FCF1; }
-        .accent-bg { background-color: #66FCF1; color: #0B0C10; }
-        .gradient-text { background: linear-gradient(90deg, #66FCF1, #45A29E); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .bento-card { transition: transform 0.3s ease, border-color 0.3s ease; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; }
-        .bento-card:hover { transform: translateY(-5px); border-color: #66FCF1; }
-        
-        /* IMAGE CONTAINERS */
-        .img-container { background: #1F2833; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
-        /* Debugger: Highlights missing images with a red box */
-        img[alt]:after { display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #2d1b1b; color: #ff9999; content: attr(alt); text-align: center; padding-top: 20px; border: 2px dashed #ff5555; }
-        
-        /* BUTTON GLOW */
-        .btn-glow:hover { box-shadow: 0 0 15px rgba(102, 252, 241, 0.4); }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARIMO Technologies Pvt. Ltd. | Deep Tech AI & Industrial Automation</title>
+    <meta name="description" content="CARIMO Technologies: Bridging AI, control systems, and education. IIT Bombay-incubated deep tech startup offering CAPMAC AI Suite, ML Kits, and DC Motor Kits.">
+    <meta property="og:title" content="CARIMO Technologies Pvt. Ltd.">
+    <meta property="og:description" content="Deep Tech AI, Industrial Automation & Educational Kits from IIT Bombay.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Raleway:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+    :root {
+        --bg:           #E8ECF2;
+        --bg2:          #DDE3EC;
+        --bg3:          #D0D8E4;
+        --surface:      #FFFFFF;
+        --navy:         #0D1F3C;
+        --navy-light:   #1A3560;
+        --accent:       #007E7A;
+        --accent-light: #00A89B;
+        --accent-pale:  #E0F5F4;
+        --accent-mid:   rgba(0,126,122,0.12);
+        --border:       rgba(13,31,60,0.10);
+        --border-accent:rgba(0,126,122,0.30);
+        --text:         #3A4557;
+        --text-dim:     #7A8899;
+        --text-bright:  #0D1F3C;
+        --font-head:    'Raleway', sans-serif;
+        --font-body:    'Plus Jakarta Sans', sans-serif;
+        --radius:       16px;
+        --shadow:       0 2px 20px rgba(13,31,60,0.08);
+        --shadow-lg:    0 8px 40px rgba(13,31,60,0.12);
+
+        /* ── TYPE SCALE (4 sizes) ─────────────────
+           Display : clamp(36px,5.5vw,64px)  Hero H1 only
+           --fs-1  : 38px   Section headings (H2)
+           --fs-2  : 26px   Panel headings (H3, kit names, AIMX title, CTA)
+           --fs-3  : 18px   All body text AND card/component headings
+                            — headings use font-weight 700, body uses 400
+           --fs-4  : 13px   Labels, badges, captions, footer, pills, nav
+        ─────────────────────────────────────────── */
+        --fs-1: 38px;
+        --fs-2: 26px;
+        --fs-3: 18px;
+        --fs-4: 13px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: var(--fs-3); line-height: 1.7; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    h1,h2,h3,h4,h5 { font-family: var(--font-head); color: var(--text-bright); font-weight: 600; letter-spacing: 0em; line-height: 1.2; }
+    p { color: var(--text); }
+    .label { font-family: var(--font-body); font-size: var(--fs-4); font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); }
+    .gradient-text { background: linear-gradient(110deg, var(--accent) 0%, var(--accent-light) 50%, #0052A5 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* BUTTONS */
+    .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: var(--fs-3); font-weight: 700; letter-spacing: 0.04em; padding: 13px 26px; border-radius: 100px; transition: all 0.22s; cursor: pointer; border: none; white-space: nowrap; }
+    .btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--navy); box-shadow: var(--shadow-lg); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--accent); border: 1.5px solid var(--border-accent); }
+    .btn-outline:hover { background: var(--accent-mid); color: var(--navy); }
+    .btn-ghost { background: var(--surface); color: var(--text); border: 1.5px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--border-accent); color: var(--accent); }
+    .btn-navy { background: var(--navy); color: #fff; }
+    .btn-navy:hover { background: var(--navy-light); box-shadow: var(--shadow-lg); }
+
+    /* NAVBAR */
+    #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 14px 48px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s; border-bottom: 1px solid transparent; }
+    #navbar.scrolled { background: rgba(245,247,250,0.95); backdrop-filter: blur(20px); border-color: var(--border); box-shadow: var(--shadow); padding: 10px 48px; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 42px; width: auto; object-fit: contain; }
+    .nav-logo-text .name { font-family: var(--font-head); font-size: var(--fs-3); font-weight: 600; color: var(--navy); letter-spacing: 0.02em; text-transform: uppercase; line-height: 1; }
+    .nav-logo-text .sub { font-size: var(--fs-4); color: var(--accent); letter-spacing: 0.15em; margin-top: 3px; font-weight: 600; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { font-size: var(--fs-4); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 99; background: rgba(245,247,250,0.98); backdrop-filter: blur(20px); flex-direction: column; justify-content: center; align-items: center; gap: 36px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: var(--font-head); font-size: var(--fs-1); font-weight: 600; color: var(--navy); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 120px 48px 72px; text-align: center; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(0,126,122,0.07) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 85% 85%, rgba(0,82,165,0.05) 0%, transparent 60%); }
+    .hero-grid { display: none; }
+    #hero .inner { position: relative; z-index: 2; max-width: 860px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--border-accent); border-radius: 100px; padding: 8px 20px; margin-bottom: 28px; font-size: var(--fs-3); font-weight: 700; letter-spacing: 0.08em; color: var(--accent); }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.8)} }
+    #hero h1 { font-size: clamp(36px, 5.5vw, 64px); margin-bottom: 10px; color: var(--navy); }
+    .hero-sub { font-size: var(--fs-4); color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 20px; font-weight: 600; text-transform: uppercase; }
+    #hero .lead { font-size: var(--fs-3); color: var(--text); max-width: 600px; margin: 0 auto 36px; }
+    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
+    .hero-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; width: 100%; max-width: 820px; margin: 0 auto; }
+    .hero-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px 16px; text-align: center; transition: all 0.25s; cursor: pointer; }
+    .hero-card:hover { border-color: var(--border-accent); background: var(--accent-pale); transform: translateY(-3px); box-shadow: var(--shadow); }
+    .hero-card .icon { font-size: 30px; margin-bottom: 8px; }
+    .hero-card h4 { font-size: var(--fs-3); color: var(--navy); margin-bottom: 3px; font-family: var(--font-body); font-weight: 700; }
+    .hero-card p { font-size: var(--fs-4); color: var(--text-dim); }
+
+    /* TRUST */
+    #trust { background: var(--navy); padding: 36px 48px; }
+    .trust-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; flex-wrap: wrap; justify-content: space-around; }
+    .trust-item { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 20px; }
+    .trust-item .num { font-family: var(--font-body); font-size: 32px; font-weight: 800; color: #fff; line-height: 1; }
+    .trust-item .desc { font-size: var(--fs-4); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 600; }
+    .trust-div { width: 1px; height: 36px; background: rgba(255,255,255,0.12); }
+
+    /* SECTIONS */
+    section { padding: 88px 48px; }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+    .section-header { margin-bottom: 52px; }
+    .section-header .label { display: block; margin-bottom: 10px; }
+    .section-header h2 { font-size: var(--fs-1); }
+    .section-header p { margin-top: 14px; max-width: 100%; font-size: var(--fs-3); }
+    .section-header.center { text-align: center; }
+    .section-header.center p { margin-left: auto; margin-right: auto; }
+
+    /* ABOUT */
+    #about { background: var(--surface); }
+    .about-grid { display: flex; flex-direction: column; gap: 36px; }
+    .about-top { display: block; }
+    .about-bottom { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .pillar { display: flex; gap: 14px; margin-bottom: 22px; }
+    .pillar-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-pale); border: 1px solid var(--border-accent); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .pillar-text h4 { font-size: var(--fs-3); color: var(--navy); margin-bottom: 2px; font-family: var(--font-body); font-weight: 700; }
+    .pillar-text p { font-size: var(--fs-3); color: var(--text-dim); }
+    .cert-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .cert { background: var(--accent-pale); border: 1px solid var(--border-accent); border-radius: 100px; padding: 6px 15px; font-size: var(--fs-4); color: var(--accent); font-weight: 700; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat-box { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+    .stat-box .big { font-family: var(--font-head); font-size: 32px; font-weight: 600; color: var(--accent); line-height: 1; }
+    .stat-box .lbl { display: block; font-size: var(--fs-4); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); margin-top: 4px; }
+    .stat-box p { font-size: var(--fs-3); color: var(--text-dim); margin-top: 6px; }
+    .market-box { margin-top: 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+    .market-box .label { margin-bottom: 12px; display: block; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+    .pill { background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 6px 14px; font-size: var(--fs-4); color: var(--text); font-weight: 500; }
+
+    /* CONSULTING */
+    #consulting { background: var(--bg); }
+    .consult-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .consult-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all 0.25s; }
+    .consult-card:hover { border-color: var(--border-accent); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .consult-top { height: 160px; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 52px; border-bottom: 1px solid var(--border); }
+    .consult-body { padding: 24px; }
+    .consult-body h4 { font-size: var(--fs-3); color: var(--navy); margin-bottom: 8px; font-family: var(--font-body); font-weight: 700; }
+    .consult-body p { font-size: var(--fs-3); color: var(--text-dim); line-height: 1.7; }
+
+    /* CAPMAC */
+    #capmac { background: var(--navy); }
+    #capmac .section-header .label { color: var(--accent-light); }
+    #capmac .section-header h2 { color: #fff; }
+    #capmac .section-header p { color: rgba(255,255,255,0.6); }
+    .capmac-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .capmac-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 28px; transition: all 0.25s; }
+    .capmac-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(0,168,155,0.5); transform: translateY(-3px); }
+    .capmac-num { font-family: var(--font-head); font-size: 36px; font-weight: 600; color: rgba(0,168,155,0.3); line-height: 1; margin-bottom: 14px; }
+    .capmac-card h3 { font-size: var(--fs-3); color: #fff; margin-bottom: 10px; font-family: var(--font-body); font-weight: 700; }
+    .capmac-card p { font-size: var(--fs-3); color: rgba(255,255,255,0.6); line-height: 1.7; }
+    .capmac-badge { margin-top: 16px; background: rgba(0,168,155,0.12); border: 1px solid rgba(0,168,155,0.3); border-radius: 10px; padding: 11px 14px; font-size: var(--fs-4); color: rgba(255,255,255,0.7); }
+    .capmac-badge strong { color: var(--accent-light); }
+    .deploy-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 40px; }
+    .deploy-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 18px; text-align: center; }
+    .deploy-box .icon { font-size: 26px; margin-bottom: 7px; }
+    .deploy-box h5 { font-size: var(--fs-3); color: #fff; margin-bottom: 3px; font-family: var(--font-body); font-weight: 700; }
+    .deploy-box p { font-size: var(--fs-4); color: rgba(255,255,255,0.45); }
+
+    /* EDUCATION */
+    #education { background: var(--bg); }
+    .edu-tabs { display: flex; gap: 6px; margin-bottom: 44px; background: var(--bg2); border: 1px solid var(--border); border-radius: 100px; padding: 4px; width: fit-content; }
+    .edu-tab { font-family: var(--font-body); font-size: var(--fs-3); font-weight: 700; padding: 10px 26px; border-radius: 100px; border: none; background: transparent; color: var(--text-dim); cursor: pointer; transition: all 0.22s; white-space: nowrap; }
+    .edu-tab.active { background: var(--navy); color: #fff; }
+    .edu-tab:hover:not(.active) { color: var(--navy); }
+    .edu-panel { display: none; }
+    .edu-panel.active { display: block; }
+
+    /* Kit layout */
+    .kit-hero { display: grid; grid-template-columns: 360px 1fr; gap: 40px; align-items: start; margin-bottom: 44px; }
+    .kit-img { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); height: 280px; display: flex; align-items: center; justify-content: center; overflow: hidden; font-size: 72px; }
+    .kit-img img { width: 100%; height: 100%; object-fit: cover; }
+    .kit-info h3 { font-size: var(--fs-2); color: var(--navy); margin-bottom: 8px; }
+    .kit-info .kit-sub { font-size: var(--fs-3); color: var(--text-dim); margin-bottom: 24px; line-height: 1.6; }
+    .spec-table { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 22px; }
+    .spec-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; font-size: var(--fs-3); border-bottom: 1px solid var(--border); }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-row span:first-child { color: var(--text-dim); }
+    .spec-row span:last-child { color: var(--navy); font-weight: 600; }
+    .kit-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* Objectives */
+    .obj-label { font-family: var(--font-body); font-size: var(--fs-4); font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 16px; }
+    .objectives { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 44px; }
+    .obj-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; display: flex; gap: 12px; align-items: flex-start; transition: border-color 0.2s; }
+    .obj-card:hover { border-color: var(--border-accent); }
+    .obj-num { font-family: var(--font-head); font-size: var(--fs-2); font-weight: 600; color: var(--accent); line-height: 1; flex-shrink: 0; padding-top: 1px; }
+    .obj-body h5 { font-size: var(--fs-3); color: var(--navy); margin-bottom: 3px; font-family: var(--font-body); font-weight: 700; }
+    .obj-body p { font-size: var(--fs-3); color: var(--text-dim); }
+
+    /* AIMX */
+    .aimx-block { background: var(--surface); border: 1.5px solid var(--border-accent); border-radius: var(--radius); overflow: hidden; margin-bottom: 44px; }
+    .aimx-header { background: linear-gradient(110deg, var(--navy) 0%, var(--navy-light) 100%); padding: 28px 32px; display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+    .aimx-header h4 { font-size: var(--fs-2); color: #fff; margin-bottom: 6px; }
+    .aimx-header p { font-size: var(--fs-3); color: rgba(255,255,255,0.65); max-width: 480px; line-height: 1.6; }
+    .aimx-body { padding: 28px 32px; }
+    .aimx-tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+    .tier-badge { border-radius: 10px; padding: 14px 18px; }
+    .tier-std { background: var(--accent-pale); border: 1px solid var(--border-accent); }
+    .tier-adv { background: var(--bg2); border: 1px solid var(--border); }
+    .tier-label-text { font-size: var(--fs-4); font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 2px; }
+    .tier-std .tier-label-text { color: var(--accent); }
+    .tier-adv .tier-label-text { color: var(--navy-light); }
+    .tier-name { font-family: var(--font-head); font-size: var(--fs-3); font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+    .tier-badge p { font-size: var(--fs-3); color: var(--text-dim); }
+
+    /* AIMX table */
+    .aimx-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
+    .aimx-table { width: 100%; border-collapse: collapse; font-size: var(--fs-3); }
+    .aimx-table th { padding: 13px 18px; font-weight: 700; text-align: left; font-size: var(--fs-4); letter-spacing: 0.05em; font-family: var(--font-body); border-bottom: 2px solid var(--border); }
+    .aimx-table th:first-child { background: var(--bg2); color: var(--text-bright); width: 16%; }
+    .aimx-table th.th-std { background: var(--accent-pale); color: var(--accent); width: 42%; }
+    .aimx-table th.th-adv { background: var(--navy); color: #fff; width: 42%; }
+    .aimx-table td { padding: 15px 18px; vertical-align: top; border-top: 1px solid var(--border); line-height: 1.6; font-size: var(--fs-3); }
+    .aimx-table tr:hover td { background: var(--bg) !important; }
+    .aimx-table td:first-child { font-weight: 700; color: var(--navy); font-size: var(--fs-3); background: var(--bg2); white-space: nowrap; }
+    .aimx-table td.td-std { color: var(--text); background: #fff; }
+    .aimx-table td.td-adv { color: var(--accent); font-weight: 500; background: #FAFFFE; }
+    .aimx-table tr.row-alt td.td-std { background: var(--bg); }
+    .aimx-table tr.row-alt td.td-adv { background: #F5FFFE; }
+
+    /* DC highlights */
+    .dc-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 36px; }
+    .dc-hl { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; display: flex; gap: 14px; transition: border-color 0.2s; }
+    .dc-hl:hover { border-color: var(--border-accent); }
+    .dc-hl .icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+    .dc-hl h5 { font-size: var(--fs-3); color: var(--navy); margin-bottom: 2px; font-family: var(--font-body); font-weight: 700; }
+    .dc-hl p { font-size: var(--fs-3); color: var(--text-dim); }
+
+    /* Apps grid */
+    .apps-label { font-family: var(--font-body); font-size: var(--fs-4); font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 14px; }
+    .apps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 36px; }
+    .app-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 13px 14px; font-size: var(--fs-3); font-weight: 600; color: var(--text); text-align: center; transition: all 0.2s; }
+    .app-chip:hover { border-color: var(--border-accent); color: var(--accent); background: var(--accent-pale); }
+
+    /* Videos */
+    .video-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 36px; }
+    .video-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.25s; }
+    .video-card:hover { border-color: var(--border-accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+    .video-preview { height: 120px; background: linear-gradient(135deg, var(--bg2), var(--bg3)); display: flex; align-items: center; justify-content: center; }
+    .play-btn { width: 48px; height: 48px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
+    .video-card:hover .play-btn { transform: scale(1.1); }
+    .play-btn svg { width: 18px; height: 18px; fill: #fff; margin-left: 3px; }
+    .video-meta { padding: 16px 18px; }
+    .video-meta strong { display: block; font-size: var(--fs-3); color: var(--navy); margin-bottom: 2px; font-weight: 700; }
+    .video-meta span { font-size: var(--fs-4); color: var(--text-dim); }
+
+    /* Resources */
+    .resources-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 36px; }
+    .resources-box h4 { font-size: var(--fs-3); color: var(--navy); margin-bottom: 4px; font-family: var(--font-body); font-weight: 700; }
+    .resources-box .sub { font-size: var(--fs-3); color: var(--text-dim); margin-bottom: 20px; }
+    .res-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .res-btn { display: flex; align-items: center; gap: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; transition: all 0.22s; }
+    .res-btn:hover { border-color: var(--border-accent); background: var(--accent-pale); }
+    .res-icon { width: 40px; height: 40px; background: var(--accent-pale); border: 1px solid var(--border-accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .res-text h5 { font-size: var(--fs-3); color: var(--navy); font-weight: 700; margin-bottom: 2px; }
+    .res-text p { font-size: var(--fs-4); color: var(--text-dim); }
+
+    /* Institutions */
+    .inst-block h4 { font-size: var(--fs-4); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; }
+    .inst-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .inst-pill { background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 7px 18px; font-size: var(--fs-3); color: var(--text); font-weight: 500; transition: all 0.2s; }
+    .inst-pill:hover { border-color: var(--border-accent); color: var(--accent); }
+
+    /* TEAM */
+    #team { background: var(--surface); }
+    .team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .team-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; text-align: center; transition: all 0.25s; }
+    .team-card:hover { border-color: var(--border-accent); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .avatar { width: 88px; height: 88px; border-radius: 50%; background: var(--bg2); border: 2px solid var(--border); margin: 0 auto 18px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 32px; transition: border-color 0.25s; }
+    .team-card:hover .avatar { border-color: var(--border-accent); }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .team-card h4 { font-size: var(--fs-3); color: var(--navy); margin-bottom: 4px; font-family: var(--font-body); font-weight: 700; }
+    .team-card .role { font-size: var(--fs-4); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 10px; }
+    .team-card p { font-size: var(--fs-3); color: var(--text-dim); }
+
+    /* CONTACT */
+    #contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-bottom: 36px; }
+    .contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all 0.25s; }
+    .contact-card:hover { border-color: var(--border-accent); box-shadow: var(--shadow); }
+    .contact-top { height: 6px; background: var(--border); }
+    .contact-top.hl { background: var(--accent); }
+    .contact-body { padding: 26px; }
+    .contact-body h4 { font-size: var(--fs-3); color: var(--navy); margin-bottom: 8px; font-family: var(--font-body); font-weight: 700; }
+    .contact-body p { font-size: var(--fs-3); color: var(--text-dim); line-height: 1.8; }
+    .contact-cta { background: var(--navy); border-radius: var(--radius); padding: 48px; text-align: center; }
+    .contact-cta h3 { font-size: var(--fs-2); color: #fff; margin-bottom: 10px; }
+    .contact-cta p { font-size: var(--fs-3); color: rgba(255,255,255,0.6); margin-bottom: 28px; }
+    .email-link { font-family: var(--font-body); font-size: var(--fs-2); font-weight: 700; color: var(--accent-light); display: inline-flex; align-items: center; gap: 10px; transition: opacity 0.2s; }
+    .email-link:hover { opacity: 0.75; }
+
+    /* INCUBATION */
+    #incubation { background: var(--surface); padding: 52px 48px; border-top: 1px solid var(--border); }
+    .incubation-inner { max-width: 1080px; margin: 0 auto; text-align: center; }
+    .logo-strip { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px; margin-top: 28px; }
+    .logo-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px 20px; min-width: 130px; height: 72px; display: flex; align-items: center; justify-content: center; transition: all 0.25s; }
+    .logo-card:hover { border-color: var(--border-accent); transform: scale(1.04); box-shadow: var(--shadow); }
+    .logo-card img { max-width: 100%; max-height: 100%; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: all 0.25s; }
+    .logo-card:hover img { filter: grayscale(0); opacity: 1; }
+    .cert-card { border-color: var(--border-accent); }
+    .cert-card .ct { font-family: var(--font-head); font-size: var(--fs-3); font-weight: 600; color: var(--accent); text-align: center; line-height: 1.3; }
+    .cert-card .ct small { display: block; font-family: var(--font-body); font-size: var(--fs-4); font-weight: 700; letter-spacing: 0.12em; color: var(--text-dim); margin-top: 3px; text-transform: uppercase; }
+
+    /* FOOTER */
+    footer { background: var(--navy); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    footer p { font-size: var(--fs-4); color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; }
+    .footer-links { display: flex; gap: 24px; align-items: center; }
+    .footer-links a { font-size: var(--fs-4); color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent-light); }
+
+    /* BACK TO TOP */
+    #back-top { position: fixed; bottom: 28px; right: 28px; width: 42px; height: 42px; background: var(--navy); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transform: translateY(10px); transition: all 0.3s; z-index: 90; box-shadow: var(--shadow); }
+    #back-top.visible { opacity: 1; transform: translateY(0); }
+    #back-top:hover { background: var(--accent); }
+    #back-top svg { width: 16px; height: 16px; stroke: #fff; }
+
+    /* SVG ICONS — replaces all emojis */
+    .svg-icon { display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .svg-icon svg { display:block; }
+    .hero-card .icon { display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
+    .hero-card .icon svg { width:36px; height:36px; }
+    .pillar-icon svg { width:20px; height:20px; }
+    .consult-top svg { width:52px; height:52px; }
+    .deploy-box .icon svg { width:28px; height:28px; }
+    .dc-hl .icon svg { width:22px; height:22px; }
+    .res-icon svg { width:20px; height:20px; }
+    .contact-body h4 svg { width:18px; height:18px; vertical-align:middle; margin-right:6px; margin-top:-2px; }
+    .fade-up { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-up.vis { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 920px) {
+        section { padding: 60px 24px; }
+        #navbar, #navbar.scrolled { padding: 12px 24px; }
+        #incubation { padding: 44px 24px; }
+        footer { padding: 24px; flex-direction: column; text-align: center; }
+        .nav-links { display: none; }
+        .hamburger { display: flex; }
+        .hero-cards { grid-template-columns: 1fr; max-width: 300px; }
+        .about-grid, .capmac-grid, .consult-grid, .contact-grid, .team-grid,
+        .about-top, .about-bottom,
+        .kit-hero, .dc-highlights, .video-row, .aimx-tiers { grid-template-columns: 1fr; }
+        .objectives { grid-template-columns: 1fr 1fr; }
+        .apps-grid { grid-template-columns: repeat(2,1fr); }
+        .res-grid { grid-template-columns: 1fr; }
+        .deploy-row { grid-template-columns: 1fr 1fr; }
+        .kit-img { height: 220px; }
+        .trust-div { display: none; }
+        .edu-tabs { flex-direction: column; border-radius: var(--radius); width: 100%; }
+        .edu-tab { border-radius: 10px; }
+    }
+    @media (max-width: 600px) {
+        .objectives { grid-template-columns: 1fr; }
+        .aimx-table th, .aimx-table td { padding: 8px 10px; font-size: var(--fs-4); }
+    }
+    </style>
 </head>
 <body>
 
-    <nav class="fixed w-full z-50 glass py-4 px-6 flex justify-between items-center border-b border-white/5">
-        <a href="#" class="flex items-center gap-4">
-            <img src="carimo-logo.png" alt="UPLOAD: carimo-logo.png" class="h-12 w-auto object-contain"> 
-            <div>
-                <span class="text-lg font-bold tracking-tight text-white uppercase block leading-none">CARIMO Technologies Private Ltd.</span>
-                <span class="text-[11px] font-medium block mt-1 accent-text tracking-wide">An IIT Bombay-based company</span>
-            </div>
-        </a>
-        <div class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-widest">
-            <a href="#consulting" class="hover:accent-text transition text-white">Consulting</a>
-            <a href="#capmac" class="hover:accent-text transition text-white">CAPMAC</a>
-            <a href="#education" class="hover:accent-text transition text-white">Edu Products</a>
-            <a href="#team" class="hover:accent-text transition text-white">Team</a>
-            <a href="#contact" class="accent-bg px-6 py-2 rounded-full hover:shadow-[0_0_15px_rgba(102,252,241,0.4)] transition">Contact Us</a>
-        </div>
-    </nav>
+<!-- NAVBAR -->
+<nav id="navbar">
+    <a href="#" class="nav-logo">
+        <img src="carimo-logo.png" alt="CARIMO" onerror="this.style.display='none'">
+        <div class="nav-logo-text">
+            <div class="name">CARIMO Technologies Private Limited</div>
+            <span class="sub">IIT Bombay Incubated · DPIIT Recognized</span>
+        </div>
+    </a>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#consulting">Consulting</a>
+        <a href="#capmac">CAPMAC</a>
+        <a href="#education">Edu Kits</a>
+        <a href="#team">Team</a>
+        <a href="#contact" class="btn btn-primary" style="padding:9px 20px;">Contact Us</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#consulting" onclick="closeMobile()">Consulting</a>
+    <a href="#capmac" onclick="closeMobile()">CAPMAC</a>
+    <a href="#education" onclick="closeMobile()">Edu Kits</a>
+    <a href="#team" onclick="closeMobile()">Team</a>
+    <a href="#contact" onclick="closeMobile()" style="color:var(--accent)">Contact Us →</a>
+</div>
 
-    <header class="min-h-screen flex flex-col justify-center items-center px-6 text-center pt-28">
-        <h1 class="text-3xl md:text-5xl font-bold mb-12 tracking-tight leading-tight max-w-5xl">
-            Control, AI, Real-time Systems, <br><span class="gradient-text">Implementation, Modelling and Optimization</span>
-        </h1>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl mx-auto">
-            <a href="#consulting" class="group glass p-6 rounded-2xl hover:bg-[#66FCF1]/10 transition border border-white/10 flex flex-col items-center">
-                <span class="block text-3xl mb-3">💡</span>
-                <h3 class="font-bold text-lg text-white mb-1 group-hover:accent-text">Strategic Consulting</h3>
-                <p class="text-xs opacity-50">AI Agents, Industrial & Defence</p>
-            </a>
-            <a href="#capmac" class="group glass p-6 rounded-2xl hover:bg-[#66FCF1]/10 transition border border-[#66FCF1]/30 flex flex-col items-center">
-                <span class="block text-3xl mb-3">🤖</span>
-                <h3 class="font-bold text-lg text-white mb-1 group-hover:accent-text">CAPMAC AI Suite</h3>
-                <p class="text-xs opacity-50">RAG, Video Analytics & PdM</p>
-            </a>
-            <a href="#education" class="group glass p-6 rounded-2xl hover:bg-[#66FCF1]/10 transition border border-white/10 flex flex-col items-center">
-                <span class="block text-3xl mb-3">📚</span>
-                <h3 class="font-bold text-lg text-white mb-1 group-hover:accent-text">Educational Products</h3>
-                <p class="text-xs opacity-50">ML Kits & Control Labs</p>
-            </a>
-        </div>
-    </header>
+<!-- HERO -->
+<header id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="inner">
+        <div class="hero-badge">IIT Bombay · SINE Incubated · DPIIT Recognized AI Startup</div>
+        <h1>Deep Tech AI for<br><span class="gradient-text">Industry & Education</span></h1>
+        <p class="lead">CARIMO Technologies bridges the gap between theoretical knowledge and practical AI applications — from industrial automation to next-generation engineering education.</p>
+        <div class="hero-actions">
+            <a href="#education" class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Explore Edu Kits
+            </a>
+            <a href="#capmac" class="btn btn-navy">View CAPMAC Suite</a>
+            <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+        </div>
+    </div>
+</header>
 
-    <section id="consulting" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
-        <h2 class="text-3xl font-bold text-white mb-16 text-center">Strategic Consulting Pillars</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="glass overflow-hidden rounded-3xl bento-card flex flex-col">
-                <div class="h-48 img-container"><img src="consulting-ai.jpg" alt="MISSING: consulting-ai.jpg" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition"></div>
-                <div class="p-8"><h4 class="text-lg font-bold mb-4 accent-text">Advanced AI Agents</h4><p class="text-sm text-gray-400 leading-relaxed">Custom Agentic RAG Systems & AI-Powered Video Analytics for education and healthcare.</p></div>
-            </div>
-            <div class="glass overflow-hidden rounded-3xl bento-card flex flex-col">
-                <div class="h-48 img-container"><img src="consulting-ind.jpg" alt="MISSING: consulting-ind.jpg" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition"></div>
-                <div class="p-8"><h4 class="text-lg font-bold mb-4 accent-text">Industrial Solutions</h4><p class="text-sm text-gray-400 leading-relaxed">AI-based predictive maintenance, advanced controller design, and PID loop tuning.</p></div>
-            </div>
-            <div class="glass overflow-hidden rounded-3xl bento-card flex flex-col">
-                <div class="h-48 img-container"><img src="consulting-defence.jpg" alt="MISSING: consulting-defence.jpg" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition"></div>
-                <div class="p-8"><h4 class="text-lg font-bold mb-4 accent-text">Defence & Specialized</h4><p class="text-sm text-gray-400 leading-relaxed">Customized solutions for automated document retrieval and defence sector challenges.</p></div>
-            </div>
-        </div>
-    </section>
+<!-- TRUST -->
+<div id="trust">
+    <div class="trust-inner">
+        <div class="trust-item"><span class="num">36+</span><span class="desc">Years at IIT Bombay</span></div>
+        <div class="trust-div"></div>
+        <div class="trust-item"><span class="num">20+</span><span class="desc">Institutions Served</span></div>
+        <div class="trust-div"></div>
+        <div class="trust-item"><span class="num">15+</span><span class="desc">Years of Kit Use</span></div>
+        <div class="trust-div"></div>
+        <div class="trust-item"><span class="num">10+</span><span class="desc">Control Strategies</span></div>
+        <div class="trust-div"></div>
+        <div class="trust-item"><span class="num">180+</span><span class="desc">Students Mentored</span></div>
+    </div>
+</div>
 
-    <section id="capmac" class="py-24 bg-[#1F2833]/30 border-y border-white/5 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold mb-6 text-white">CAPMAC <span class="accent-text">AI Suite</span></h2>
-                <p class="text-xl opacity-80 max-w-3xl mx-auto leading-relaxed">Our flagship suite of customizable, AI-driven technologies for industrial challenges.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
-                <div class="glass p-8 rounded-[2.5rem] bento-card flex flex-col">
-                    <div class="img-container h-56 mb-8 border-b border-white/10 rounded-xl"><img src="capmac-video.jpg" alt="MISSING: capmac-video.jpg" class="h-full w-full object-cover opacity-80"></div>
-                    <h3 class="text-2xl font-bold mb-4 text-white flex items-center gap-3"><span class="accent-text">01.</span> Video Analytics</h3>
-                    <p class="text-sm text-gray-400 mb-6">CUDA-optimized processing for hundreds of video streams simultaneously.</p>
-                    <div class="bg-[#66FCF1]/10 p-4 rounded-xl border border-[#66FCF1]/20 text-xs mt-auto"><span class="font-bold accent-text">Proven Performance:</span> Highly positive results with international clients like Vela Research (USA).</div>
-                </div>
-                <div class="glass p-8 rounded-[2.5rem] bento-card flex flex-col">
-                    <div class="img-container h-56 mb-8 border-b border-white/10 rounded-xl"><img src="capmac-rag.jpg" alt="MISSING: capmac-rag.jpg" class="h-full w-full object-cover opacity-80"></div>
-                    <h3 class="text-2xl font-bold mb-4 text-white flex items-center gap-3"><span class="accent-text">02.</span> Agentic RAG Systems</h3>
-                    <p class="text-sm text-gray-400 mb-6">Context-aware AI agents built on Retrieval Augmented Generation for autonomous reasoning.</p>
-                    <div class="bg-[#66FCF1]/10 p-4 rounded-xl border border-[#66FCF1]/20 text-xs mt-auto"><span class="font-bold accent-text">Enterprise Grade:</span> Utilizes secure, locally-running LLMs for reliability.</div>
-                </div>
-                <div class="glass p-8 rounded-[2.5rem] bento-card flex flex-col">
-                    <div class="img-container h-56 mb-8 border-b border-white/10 rounded-xl"><img src="capmac-pdm-new.jpg" alt="MISSING: capmac-pdm-new.jpg" class="h-full w-full object-cover opacity-80"></div>
-                    <h3 class="text-2xl font-bold mb-4 text-white flex items-center gap-3"><span class="accent-text">03.</span> Predictive Maintenance</h3>
-                    <p class="text-sm text-gray-400 mb-6">Advanced algorithms to predict equipment failures before they occur.</p>
-                    <div class="bg-[#66FCF1]/10 p-4 rounded-xl border border-[#66FCF1]/20 text-xs mt-auto"><span class="font-bold accent-text">Validated Success:</span> Proven through tests with a German startup and BPCL.</div>
-                </div>
-                <div class="glass p-8 rounded-[2.5rem] bento-card flex flex-col">
-                    <div class="img-container h-56 mb-8 border-b border-white/10 rounded-xl"><img src="capmac-atpid.jpg" alt="MISSING: capmac-atpid.jpg" class="h-full w-full object-cover opacity-80"></div>
-                    <h3 class="text-2xl font-bold mb-4 text-white flex items-center gap-3"><span class="accent-text">04.</span> Autotuning PID</h3>
-                    <p class="text-sm text-gray-400 mb-6">Real-time optimization of industrial control loops for precise process control.</p>
-                    <div class="bg-[#66FCF1]/10 p-4 rounded-xl border border-[#66FCF1]/20 text-xs mt-auto"><span class="font-bold accent-text">Industrial Integration:</span> Tested with Yokogawa & Honeywell DCS at BPCL.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="education" class="py-24 px-6 max-w-7xl mx-auto">
-        <h2 class="text-3xl font-bold mb-20 text-center text-white">Educational & Research Ecosystem</h2>
-        
-        <div class="glass rounded-[2rem] border border-white/10 mb-20 overflow-hidden p-8">
-             <h3 class="text-3xl font-bold text-white mb-2 text-center">Machine Learning Kit (MLK)</h3>
-             <p class="text-sm text-gray-400 mb-12 text-center max-w-2xl mx-auto">A complete ecosystem bridging embedded hardware with intelligent software.</p>
+<!-- WHAT WE OFFER -->
+<div style="background:var(--surface);border-bottom:1px solid var(--border);padding:40px 48px;">
+    <div style="max-width:1080px;margin:0 auto;">
+        <p style="font-size:var(--fs-4);font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:24px;">What We Offer</p>
+        <div class="hero-cards">
+            <a href="#consulting" class="hero-card">
+                <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+                <h4>Strategic Consulting</h4>
+                <p>AI Agents, Industrial & Defence</p>
+            </a>
+            <a href="#capmac" class="hero-card">
+                <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h2l2 5 2-8 2 5h2"/></svg></div>
+                <h4>CAPMAC AI Suite</h4>
+                <p>RAG, Video Analytics & PdM</p>
+            </a>
+            <a href="#education" class="hero-card">
+                <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+                <h4>Educational Kits</h4>
+                <p>ML Kit & DC Motor Kit</p>
+            </a>
+        </div>
+    </div>
+</div>
 
-             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-                <div>
-                    <div class="h-64 img-container rounded-2xl mb-6"><img src="ml-kit.jpg" alt="MISSING: ml-kit.jpg" class="h-full object-cover"></div>
-                    <h4 class="text-xl font-bold accent-text mb-4">The Hardware Core</h4>
-                     <ul class="text-xs text-gray-300 space-y-2 bg-black/40 p-4 rounded-xl mb-6">
-                        <li class="flex justify-between border-b border-white/10 pb-1"><span>Processor</span> <span class="text-white">Cortex-M4F @ 168 MHz</span></li>
-                        <li class="flex justify-between border-b border-white/10 pb-1"><span>Current Sensor</span> <span class="text-white">±0.1% Accuracy</span></li>
-                        <li class="flex justify-between pt-1"><span>Vibration</span> <span class="text-white">1.0 mg Resolution</span></li>
-                    </ul>
-                    <a href="https://drive.google.com/file/d/1RNgdH-0UL-7tYmukzNo7EM-0Cbddjg0I/view?pli=1" target="_blank" class="glass w-full py-4 rounded-xl text-center font-bold text-white hover:bg-[#66FCF1] hover:text-[#0B0C10] transition btn-glow block">
-                        Download MLK Brochure
-                    </a>
-                </div>
-                <div class="bg-[#66FCF1]/5 p-6 rounded-2xl">
-                    <div class="h-48 img-container rounded-xl mb-6 border border-[#66FCF1]/20"><img src="aimx-ui.png" alt="MISSING: aimx-ui.png" class="h-full object-cover"></div>
-                    <h4 class="text-xl font-bold accent-text mb-2">AIMX Software Add-on</h4>
-                    <p class="text-sm text-gray-300 mb-4 leading-relaxed">A powerful, no-code interface designed to simplify the complex process of training and deploying AI models directly onto the hardware.</p>
-                    <h5 class="text-xs font-bold text-white uppercase tracking-widest mb-2">Key Experiments & Features:</h5>
-                     <ul class="text-xs text-gray-400 space-y-2 list-disc pl-4">
-                        <li>Train 39+ Classification & 35+ Regression models without writing code.</li>
-                        <li>Real-time data acquisition and model testing loop.</li>
-                        <li>Seamless deployment of trained models to the embedded MCU.</li>
-                    </ul>
-                </div>
-             </div>
-        </div>
+<!-- ABOUT -->
+<section id="about">
+    <div class="section-inner">
+        <div class="about-grid fade-up">
 
-        <div class="glass rounded-[2rem] border border-white/10 overflow-hidden p-8">
-             <h3 class="text-3xl font-bold text-white mb-2 text-center">DC Motor Kit (DCMK)</h3>
-             <p class="text-sm text-gray-400 mb-12 text-center max-w-2xl mx-auto">The gold standard for control systems laboratories, licensed by IIT Bombay.</p>
+            <!-- TOP: heading + description + pillars + certs, centred -->
+            <div class="about-top" style="text-align:center;">
+                <div>
+                    <span class="label" style="display:block;margin-bottom:10px;">Who We Are</span>
+                    <h2 style="margin-bottom:10px;">A Deep Tech Startup <span class="gradient-text">Born at IIT Bombay</span></h2>
+                    <p style="font-size:var(--fs-4);font-weight:600;letter-spacing:0.08em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;">Control · AI · Real-time Systems · Implementation · Modelling & Optimization</p>
+                    <p style="margin-bottom:36px;">Founded by Prof. (Retd.) Nataraj Paluri, CARIMO is an AI startup incubated at SINE (IIT Bombay) and I-Hub Ahmedabad, dedicated to bridging theoretical knowledge with real-world industrial and educational applications.</p>
+                    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:left;margin-bottom:28px;">
+                        <div class="pillar" style="margin-bottom:0;"><div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="pillar-text"><h4>Deep Tech Innovation</h4><p>Cutting-edge AI, control systems, high-performance computing, and agentic intelligence.</p></div></div>
+                        <div class="pillar" style="margin-bottom:0;"><div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 10v11M16 10v11M12 10v11"/></svg></div><div class="pillar-text"><h4>Government Recognition</h4><p>UDYAM MSME and DPIIT certified, with a registered trademark and IIT Bombay technology manufacturing license.</p></div></div>
+                        <div class="pillar" style="margin-bottom:0;"><div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div><div class="pillar-text"><h4>Strategic Locations</h4><p>Mumbai headquarters, SINE IIT Bombay, and I-Hub Ahmedabad innovation branches.</p></div></div>
+                    </div>
+                    <div class="cert-row" style="justify-content:center;">
+                        <span class="cert">UDYAM MSME</span><span class="cert">DPIIT AI Startup</span><span class="cert">IIT Bombay Licensed</span><span class="cert">GeM Registered</span><span class="cert">Registered Trademark</span>
+                    </div>
+                </div>
+            </div>
 
-             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-                <div>
-                    <div class="h-64 img-container rounded-2xl mb-6"><img src="dc-motor.jpg" alt="MISSING: dc-motor.jpg" class="h-full object-cover"></div>
-                    <h4 class="text-xl font-bold accent-text mb-4">The Hardware Core</h4>
-                     <ul class="text-xs text-gray-300 space-y-2 bg-black/40 p-4 rounded-xl mb-6">
-                        <li class="flex justify-between border-b border-white/10 pb-1"><span>License</span> <span class="text-white">IIT Bombay Official</span></li>
-                        <li class="flex justify-between border-b border-white/10 pb-1"><span>Sensor</span> <span class="text-white">Precision Optical Encoder</span></li>
-                        <li class="flex justify-between pt-1"><span>Chassis</span> <span class="text-white">Industrial Grade</span></li>
-                    </ul>
-                    <a href="https://drive.google.com/file/d/1jXFqNH5g5IIVsI4Ax9NhlfQ_5a1VgSEY/view?usp=drive_link" target="_blank" class="glass w-full py-4 rounded-xl text-center font-bold text-white hover:bg-[#66FCF1] hover:text-[#0B0C10] transition btn-glow block">
-                        Download DCMK Brochure
-                    </a>
-                </div>
-                <div class="bg-[#66FCF1]/5 p-6 rounded-2xl">
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div class="h-32 img-container rounded-xl border border-[#66FCF1]/20"><img src="fuzzy-ui.png" alt="MISSING: fuzzy-ui.png" class="h-full object-cover"></div>
-                        <div class="h-32 img-container rounded-xl border border-[#66FCF1]/20"><img src="mpc-ui.png" alt="MISSING: mpc-ui.png" class="h-full object-cover"></div>
-                    </div>
-                    <h4 class="text-xl font-bold accent-text mb-2">Advanced Control Suites</h4>
-                    <p class="text-sm text-gray-300 mb-4 leading-relaxed">Advanced add-on software packages for conducting modern control theory experiments in real-time.</p>
-                    <h5 class="text-xs font-bold text-white uppercase tracking-widest mb-2">Key Experiments & Features:</h5>
-                     <ul class="text-xs text-gray-400 space-y-2 list-disc pl-4">
-                        <li>**Fuzzy Logic:** Design Mamdani & Sugeno controllers with 3D surface visualization.</li>
-                        <li>**MPC Suite:** Implement Model Predictive Control with real-time solvers and constraint handling.</li>
-                        <li>Real-time disturbance rejection and tracking experiments.</li>
-                    </ul>
-                </div>
-             </div>
-        </div>
-    </section>
+            <!-- BOTTOM: 3 stat boxes full-width -->
+            <div class="about-bottom">
+                <div class="stat-box"><div class="big">BPCL</div><span class="lbl">Industry Validated</span><p>Proven with BPCL, Aditya Birla, Triveni Engineering and more in Oil, Gas & Chemical sectors.</p></div>
+                <div class="stat-box"><div class="big">IIT+</div><span class="lbl">Top Institutions</span><p>Deployed at IIT Bombay, NIT Trichy, NIT Calicut, Manipal, IIIT Kurnool and more.</p></div>
+                <div class="stat-box"><div class="big">AI</div><span class="lbl">Core Expertise</span><p>Agentic AI, RAG systems, CUDA Video Analytics, Predictive Maintenance & Control Systems.</p></div>
+            </div>
 
-    <section id="team" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold mb-4 text-white">Leadership & <span class="accent-text">Research Team</span></h2>
-            <p class="text-sm opacity-60 uppercase tracking-widest">Experts from IIT Bombay & Research Institutes</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition"><img src="team-nataraj.jpg" alt="User Photo" class="w-full h-full object-cover"></div>
-                <h4 class="text-xl font-bold text-white mb-1">Dr. Nataraj Paluri</h4><p class="text-xs accent-text uppercase tracking-wider mb-4">Founder & Technical Director</p><p class="text-xs text-gray-400">36+ years Faculty at IIT Bombay.</p>
-            </div>
-            <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition"><img src="team-satyavalli.jpg" alt="User Photo" class="w-full h-full object-cover"></div>
-                <h4 class="text-xl font-bold text-white mb-1">Satyavalli Paluri</h4><p class="text-xs accent-text uppercase tracking-wider mb-4">Co-Founder & Ops Director</p><p class="text-xs text-gray-400">14+ years in Technology Management.</p>
-            </div>
-            <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition"><img src="team-sravya.jpg" alt="User Photo" class="w-full h-full object-cover"></div>
-                <h4 class="text-xl font-bold text-white mb-1">Dr. Sravya Paluri</h4><p class="text-xs accent-text uppercase tracking-wider mb-4">Chief Operating Officer</p><p class="text-xs text-gray-400">Expert in healthcare systems and Scientific Advisor.</p>
-            </div>
-            <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition"><img src="team-karan.jpg" alt="User Photo" class="w-full h-full object-cover"></div>
-                <h4 class="text-lg font-bold text-white mb-1">Karan Chanchlani</h4><p class="text-xs accent-text uppercase tracking-wider mb-4">Lead R&D Engineer</p><p class="text-xs text-gray-400">Embedded systems & robotics.</p>
-            </div>
-            <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition"><img src="team-ajit.jpg" alt="User Photo" class="w-full h-full object-cover"></div>
-                <h4 class="text-lg font-bold text-white mb-1">Ajit Zore</h4><p class="text-xs accent-text uppercase tracking-wider mb-4">Technical Specialist</p><p class="text-xs text-gray-400">8+ years hardware experience.</p>
-            </div>
-            <div class="glass p-8 rounded-2xl bento-card text-center group">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-2 border-[#66FCF1]/20 group-hover:border-[#66FCF1] transition"><img src="team-maryam.jpg" alt="User Photo" class="w-full h-full object-cover"></div>
-                <h4 class="text-lg font-bold text-white mb-1">Maryam Bahlooli</h4><p class="text-xs accent-text uppercase tracking-wider mb-4">AI Research Intern</p><p class="text-xs text-gray-400">AI and ML algorithms.</p>
-            </div>
-        </div>
-    </section>
+            <!-- TARGET MARKETS: full-width below stats -->
+            <div class="market-box" style="margin-top:0;text-align:center;">
+                <span class="label" style="display:block;margin-bottom:12px;">Target Markets</span>
+                <div class="pill-row" style="justify-content:center;"><span class="pill">Process Industries</span><span class="pill">Media & Broadcasting</span><span class="pill">Enterprise Knowledge</span><span class="pill">Engineering Education</span><span class="pill">Healthcare & Agriculture</span><span class="pill">Cultural Heritage</span><span class="pill">Defence</span></div>
+            </div>
 
-    <section id="contact" class="py-24 bg-[#0B0C10] border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-6">
-             <h2 class="text-3xl font-bold mb-16 text-center text-white">Contact Us</h2>
-             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <div class="glass p-0 rounded-3xl border-t-4 border-[#66FCF1] overflow-hidden">
-                     <div class="h-40 img-container"><img src="royal-palms.jpg" alt="MISSING: royal-palms.jpg" class="w-full h-full object-cover opacity-80"></div>
-                    <div class="p-8"><h4 class="text-lg font-bold mb-4 text-white flex items-center gap-3"><span class="text-2xl">🏢</span> Mumbai HQ</h4><p class="text-sm text-gray-400 leading-relaxed">#203, Palms-1, Royal Palms Estate,<br>Goregaon (E), Mumbai - 400065</p></div>
-                </div>
-                 <div class="glass p-0 rounded-3xl border-t-4 border-white/20 overflow-hidden">
-                     <div class="h-40 img-container"><img src="iitb-entrance.jpg" alt="MISSING: iitb-entrance.jpg" class="w-full h-full object-cover opacity-80"></div>
-                    <div class="p-8"><h4 class="text-lg font-bold mb-4 text-white flex items-center gap-3"><span class="text-2xl">🎓</span> SINE Branch</h4><p class="text-sm text-gray-400 leading-relaxed">5th floor, SINE, RBTIC,<br>IIT Bombay, Mumbai 400076</p></div>
-                </div>
-                 <div class="glass p-0 rounded-3xl border-t-4 border-white/20 overflow-hidden">
-                     <div class="h-40 img-container"><img src="ihub-office.jpg" alt="MISSING: ihub-office.jpg" class="w-full h-full object-cover opacity-80"></div>
-                    <div class="p-8"><h4 class="text-lg font-bold mb-4 text-white flex items-center gap-3"><span class="text-2xl">🚀</span> I-Hub Branch</h4><p class="text-sm text-gray-400 leading-relaxed">2nd Floor, iHub,<br>Ahmedabad, Gujarat 380015</p></div>
-                </div>
-             </div>
-             <div class="text-center"><a href="mailto:contact@carimo.tech" class="glass inline-block px-10 py-4 rounded-full text-xl font-bold accent-text hover:bg-[#66FCF1]/10 transition flex items-center gap-3 mx-auto"><span>✉️</span> contact@carimo.tech</a></div>
-        </div>
-    </section>
+        </div>
+    </div>
+</section>
 
-    <section class="py-16 bg-[#F5F5F5] text-center border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <p class="text-[10px] uppercase tracking-[0.3em] mb-10 opacity-60 text-black font-bold">Powered and Incubated By</p>
-            <div class="flex flex-wrap justify-center items-center gap-12">
-                <div class="bg-white rounded-xl p-4 w-36 h-24 flex items-center justify-center opacity-90 hover:opacity-100 transition hover:scale-105 duration-300 shadow-md">
-                    <img src="sine-logo.png" alt="MISSING: sine-logo.png" class="max-h-full max-w-full object-contain grayscale hover:grayscale-0 transition">
-                </div>
-                <div class="bg-white rounded-xl p-4 w-36 h-24 flex items-center justify-center opacity-90 hover:opacity-100 transition hover:scale-105 duration-300 shadow-md">
-                    <img src="ihub-logo.png" alt="MISSING: ihub-logo.png" class="max-h-full max-w-full object-contain grayscale hover:grayscale-0 transition">
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- CONSULTING -->
+<section id="consulting">
+    <div class="section-inner">
+        <div class="section-header fade-up">
+            <span class="label">Services</span>
+            <h2>Strategic <span class="gradient-text">Consulting Pillars</span></h2>
+            <p>Expert technical guidance for complex engineering challenges, drawing on deep experience in industrial automation, AI, and defence.</p>
+        </div>
+        <div class="consult-grid fade-up">
+            <div class="consult-card">
+                <div class="consult-top"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="3" fill="var(--accent-pale)" stroke="none"/><path d="M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></div>
+                <div class="consult-body"><h4>Advanced AI Agents & Analytics</h4><p>Custom Agentic RAG Systems and AI-Powered Video Analytics for education, healthcare, agriculture, administration, and cultural heritage. Natural language interfaces for non-technical users.</p></div>
+            </div>
+            <div class="consult-card">
+                <div class="consult-top"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
+                <div class="consult-body"><h4>Industrial Solutions</h4><p>AI-based predictive maintenance strategies, advanced controller design, and PID control loop tuning. Proven implementation with Yokogawa and Honeywell DCS systems at BPCL and Aditya Birla.</p></div>
+            </div>
+            <div class="consult-card">
+                <div class="consult-top"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+                <div class="consult-body"><h4>Defence & Specialized</h4><p>Specialized technical expertise for high-value, complex design projects in the Indian defence sector. Customized automated document retrieval and intelligent information access solutions.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <footer class="py-6 bg-[#0B0C10] text-center opacity-30 text-[10px] uppercase tracking-widest border-t border-white/5">
-        CARIMO Technologies Private Limited © 2026. All Rights Reserved.
-    </footer>
+<!-- CAPMAC -->
+<section id="capmac">
+    <div class="section-inner">
+        <div class="section-header fade-up">
+            <span class="label">AI Products</span>
+            <h2 style="color:#fff;">CAPMAC <span class="gradient-text">AI Suite</span></h2>
+            <p>Our flagship suite of customizable, AI-driven technologies designed to address complex industrial challenges and provide intelligent data processing across multiple domains.</p>
+        </div>
+        <div class="capmac-grid fade-up">
+            <div class="capmac-card"><div class="capmac-num">01</div><h3>Video Analytics</h3><p>CUDA-optimized processing for hundreds of video streams simultaneously. Features advanced pattern recognition with optimized video and audio indexing and precision metrics for efficient content analysis.</p><div class="capmac-badge"><strong>Key Capability:</strong> Hundreds of concurrent streams with CUDA-accelerated algorithms and real-time indexing.</div></div>
+            <div class="capmac-card"><div class="capmac-num">02</div><h3>Agentic RAG Systems</h3><p>Built on Retrieval Augmented Generation (RAG), combining Large Language Models with domain-specific data for context-aware answers and autonomous reasoning. Secure, locally-running LLMs for enterprise-grade reliability.</p><div class="capmac-badge"><strong>Enterprise Grade:</strong> Natural language querying for non-technical staff across education, healthcare, agriculture, and enterprise knowledge management.</div></div>
+            <div class="capmac-card"><div class="capmac-num">03</div><h3>Predictive Maintenance (PdM)</h3><p>Analyzes real-time and historical data using advanced algorithms to identify potential equipment failures before they occur. Minimizes unplanned downtime and extends equipment lifespan.</p><div class="capmac-badge"><strong>Validated Success:</strong> Proven through rigorous testing with BPCL and industrial partners in Oil &amp; Gas and Chemicals sectors.</div></div>
+            <div class="capmac-card"><div class="capmac-num">04</div><h3>Autotuning PID Control (AT-PID)</h3><p>Automatically optimizes PID control loops in real-time for precise process control — level, flow, temperature, pressure, and speed. PC-based with OPC-DA/UA integration; planned edge deployment on MCUs like STM32.</p><div class="capmac-badge"><strong>Industrial Integration:</strong> Successfully deployed with DCS (Yokogawa, Honeywell) at BPCL and Aditya Birla.</div></div>
+        </div>
+        <div class="deploy-row fade-up">
+            <div class="deploy-box"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(0,168,155,0.8)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h5>PC-Based</h5><p>Offline & real-time configurations</p></div>
+            <div class="deploy-box"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(0,168,155,0.8)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div><h5>Cloud Deployment</h5><p>Scalable, accessible anywhere</p></div>
+            <div class="deploy-box"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(0,168,155,0.8)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h5>Edge Computing</h5><p>STM32 MCU future deployments</p></div>
+            <div class="deploy-box"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(0,168,155,0.8)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18" stroke-width="2.5"/></svg></div><h5>Vendor-Agnostic</h5><p>OPC-DA/UA DCS/PLC integration</p></div>
+        </div>
+    </div>
+</section>
 
+<!-- EDUCATION -->
+<section id="education">
+    <div class="section-inner">
+        <div class="section-header fade-up">
+            <span class="label">Educational Technology</span>
+            <h2>Learning Kits & <span class="gradient-text">Research Tools</span></h2>
+            <p>Hands-on systems bridging theoretical knowledge with practical applications, supporting next-generation engineering education across India.</p>
+        </div>
+
+        <div class="edu-tabs fade-up">
+            <button class="edu-tab active" onclick="switchTab(event,'mlk')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:6px;margin-top:-2px;"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0h10m-10 0H3m6 0v4m4-4v4m0 0H9m4 0h4"/></svg>ML Kit (MLK)
+            </button>
+            <button class="edu-tab" onclick="switchTab(event,'dcmk')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:6px;margin-top:-2px;"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><circle cx="12" cy="12" r="7" stroke-dasharray="2 3"/></svg>DC Motor Kit (DCMK)
+            </button>
+        </div>
+
+        <!-- ══ ML KIT ══ -->
+        <div class="edu-panel active" id="panel-mlk">
+
+            <div class="kit-hero fade-up">
+                <div class="kit-img">
+                    <img src="ml-kit.jpg" alt="Machine Learning Kit" onerror="this.parentNode.removeChild(this); this.parentNode.textContent='🔬'">
+                </div>
+                <div class="kit-info">
+                    <h3>Machine Learning <span class="gradient-text">Kit</span></h3>
+                    <p class="kit-sub">A compact, sensor-rich system generating real-world data from a DC motor — the complete ecosystem bridging embedded hardware with intelligent no-code software.</p>
+                    <div class="spec-table">
+                        <div class="spec-row"><span>Processor</span><span>ARM Cortex-M4F @ 168 MHz</span></div>
+                        <div class="spec-row"><span>Current Sensor</span><span>±0.1% Accuracy</span></div>
+                        <div class="spec-row"><span>Vibration Sensor</span><span>3-axis MEMS, 1.0 mg Resolution</span></div>
+                        <div class="spec-row"><span>Data Outputs</span><span>Speed, Current, Voltage, 3-axis Vibration</span></div>
+                        <div class="spec-row"><span>Availability</span><span>Listed on Govt. e-Marketplace (GeM)</span></div>
+                    </div>
+                    <div class="kit-btns">
+                        <a href="https://drive.google.com/file/d/1S5B8qFAAvu89NcPVzePH0xWyA2PiLeTp/view?usp=drive_link" target="_blank" class="btn btn-primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            MLK Brochure
+                        </a>
+                        <a href="https://www.youtube.com/playlist?list=PLzsrOq7YyBW1A6zMcdZMvmP-TaLOs1_SZ" target="_blank" class="btn btn-outline">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            Watch Playlist
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <span class="obj-label">Learning Objectives</span>
+            <div class="objectives fade-up">
+                <div class="obj-card"><div class="obj-num">01</div><div class="obj-body"><h5>Data Collection & Preprocessing</h5><p>Real-time gathering from multiple sensors; cleaning and preprocessing workflows.</p></div></div>
+                <div class="obj-card"><div class="obj-num">02</div><div class="obj-body"><h5>Exploratory Data Analysis</h5><p>Visualisation techniques to develop critical data interpretation skills.</p></div></div>
+                <div class="obj-card"><div class="obj-num">03</div><div class="obj-body"><h5>Feature Engineering</h5><p>Identify, create, and select relevant features from raw sensor data.</p></div></div>
+                <div class="obj-card"><div class="obj-num">04</div><div class="obj-body"><h5>Model Development & Evaluation</h5><p>Apply ML algorithms from basic regression to advanced classification.</p></div></div>
+                <div class="obj-card"><div class="obj-num">05</div><div class="obj-body"><h5>Real-world Problem Solving</h5><p>Tackle realistic scenarios with actual sensor data; bridge theory to practice.</p></div></div>
+                <div class="obj-card"><div class="obj-num">06</div><div class="obj-body"><h5>Algorithm Comparison</h5><p>Compare different ML algorithms on the same dataset; evaluate selection trade-offs.</p></div></div>
+            </div>
+
+            <!-- AIMX -->
+            <div class="aimx-block fade-up">
+                <div class="aimx-header">
+                    <div>
+                        <h4>AIMX Software — AI for ML Experiments</h4>
+                        <p>A powerful, no-code interactive platform covering the entire ML workflow. Train and deploy AI models directly to hardware — no programming required. Two tiers available.</p>
+                    </div>
+                    <a href="https://youtu.be/LPJ5hfHyFc4" target="_blank" class="btn btn-outline" style="color:#fff; border-color:rgba(255,255,255,0.3); flex-shrink:0;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        Watch Demo
+                    </a>
+                </div>
+                <div class="aimx-body">
+                    <div class="aimx-tiers">
+                        <div class="tier-badge tier-std">
+                            <div class="tier-label-text">Included with MLK</div>
+                            <div class="tier-name">AIMX Standard</div>
+                            <p>5 apps · 6 experiments · 10 classification · 10 regression · 5 clustering models · Input: ML Kit CSV only</p>
+                        </div>
+                        <div class="tier-badge tier-adv">
+                            <div class="tier-label-text">Add-on Purchase</div>
+                            <div class="tier-name">AIMX Advanced</div>
+                            <p>5 apps · Same 6 experiments · 42 classification · 40 regression · 10 clustering models · Accepts external CSV data</p>
+                        </div>
+                    </div>
+
+                    <div class="aimx-table-wrap">
+                        <table class="aimx-table">
+                            <thead>
+                                <tr>
+                                    <th>Application</th>
+                                    <th class="th-std">AIMX Standard — Included with MLK</th>
+                                    <th class="th-adv">AIMX Advanced — Add-on Purchase</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Experiments App<br><small style="font-weight:400;color:var(--text-dim)">(6 in both)</small></td>
+                                    <td class="td-std">
+                                        1. Advanced Data Audit &amp; Exploration<br>
+                                        2. Uncovering Patterns &amp; Relationships in Data<br>
+                                        3. Statistical Summarization &amp; Data Aggregation<br>
+                                        4. Ranking &amp; Visualizing Feature Importance<br>
+                                        5. Data Transformation via Principal Component Analysis<br>
+                                        6. Interactive Exploration of a Classification Tree Model
+                                    </td>
+                                    <td class="td-adv">Same 6 experiments as AIMX Standard</td>
+                                </tr>
+                                <tr class="row-alt">
+                                    <td>Classification App</td>
+                                    <td class="td-std">
+                                        <strong>10 models:</strong><br>
+                                        Logistic Regression: Binary GLM, Efficient Logistic<br>
+                                        Discriminant Analysis: Linear Discriminant<br>
+                                        Naive Bayes: Gaussian Naive Bayes<br>
+                                        SVM: Linear SVM &nbsp;·&nbsp; KNN: Fine KNN<br>
+                                        Decision Trees: Fine Tree<br>
+                                        Ensemble: Random Forest, Gradient Boosting<br>
+                                        Neural Network: Trilayered Neural Network
+                                    </td>
+                                    <td class="td-adv">
+                                        <strong>42 models:</strong><br>
+                                        Decision Trees: Fine, Medium, Coarse<br>
+                                        Discriminant: Linear, Quadratic<br>
+                                        Logistic Regression: Binary GLM, Efficient Logistic<br>
+                                        Naive Bayes: Gaussian, Kernel<br>
+                                        SVM: Linear, Quadratic, Cubic, Fine/Medium/Coarse Gaussian (6)<br>
+                                        Efficient Linear: SGD, Ridge &nbsp;·&nbsp; KNN: 6 variants<br>
+                                        Kernel Approx.: SVM Kernel, LogReg Kernel<br>
+                                        Ensemble: Boosted, Bagged, Subspace DA/KNN, Random Forest, Extra Trees, Gradient Boosting, RUSBoosted (8)<br>
+                                        Neural Network: Narrow, Medium, Wide, Bilayered, Trilayered (5)<br>
+                                        Modern Boosting: Hist GBM, LightGBM, XGBoost, XGBoost RF (4)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Regression App</td>
+                                    <td class="td-std">
+                                        <strong>10 models:</strong><br>
+                                        Linear: Linear, Robust Linear, Stepwise Linear<br>
+                                        Decision Tree: Decision Tree<br>
+                                        SVM: Linear SVM &nbsp;·&nbsp; KNN: Fine KNN<br>
+                                        Ensemble: Random Forest<br>
+                                        Neural Network: Trilayered NN, Bilayered NN, Medium NN
+                                    </td>
+                                    <td class="td-adv">
+                                        <strong>40 models:</strong><br>
+                                        Linear/Regularized: Linear, Interactions, Robust, Stepwise, Ridge, Lasso, ElasticNet, Bayesian Ridge (8)<br>
+                                        Regression Trees: Fine, Medium, Coarse<br>
+                                        SVM: Linear, Quadratic, Cubic, Fine/Medium/Coarse Gaussian (6)<br>
+                                        Efficient Linear: SGD, Linear SVM &nbsp;·&nbsp; KNN: 6 variants<br>
+                                        Ensemble: AdaBoost, GBM, Random Forest, Extra Trees, Hist GBM (5)<br>
+                                        Gaussian Process: Squared Exp, Matern 5/2, Rational Quadratic (3)<br>
+                                        Neural Network: Narrow, Medium, Wide, Bilayered, Trilayered (5)<br>
+                                        Kernel Methods: SVM Kernel (RBF), Least Squares Kernel
+                                    </td>
+                                </tr>
+                                <tr class="row-alt">
+                                    <td>Clustering App</td>
+                                    <td class="td-std">
+                                        <strong>5 models:</strong><br>
+                                        Centroid-Based: KMeans, MiniBatchKMeans<br>
+                                        Density-Based: DBSCAN<br>
+                                        Probabilistic: Gaussian Mixture<br>
+                                        Hierarchical: Agglomerative
+                                    </td>
+                                    <td class="td-adv">
+                                        <strong>10 models:</strong><br>
+                                        Centroid-Based: KMeans, MiniBatchKMeans<br>
+                                        Hierarchical: Birch, Agglomerative<br>
+                                        Density-Based: DBSCAN, OPTICS, HDBSCAN, MeanShift<br>
+                                        Graph/Propagation: Affinity Propagation<br>
+                                        Probabilistic: Gaussian Mixture
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Deployment App</td>
+                                    <td class="td-std">2 analyses: Classification &amp; Regression</td>
+                                    <td class="td-adv">2 analyses: Classification &amp; Regression</td>
+                                </tr>
+                                <tr class="row-alt">
+                                    <td>Input Data</td>
+                                    <td class="td-std">ML Kit CSV only (exported via CARIMO front-end software)</td>
+                                    <td class="td-adv">Relevant CSV data from external sources</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end panel-mlk -->
+
+        <!-- ══ DC MOTOR KIT ══ -->
+        <div class="edu-panel" id="panel-dcmk">
+
+            <div class="kit-hero fade-up">
+                <div class="kit-img">
+                    <img src="dc-motor.jpg" alt="DC Motor Kit" onerror="this.parentNode.removeChild(this); this.parentNode.textContent='⚙️'">
+                </div>
+                <div class="kit-info">
+                    <h3>DC Motor <span class="gradient-text">Kit</span></h3>
+                    <p class="kit-sub">The gold standard for control systems laboratories — born at IIT Bombay and used in classroom teaching for over 15 years. Affordable, portable, with interactive software and MATLAB/Simulink interface.</p>
+                    <div class="spec-table">
+                        <div class="spec-row"><span>License</span><span>IIT Bombay Official Technology License</span></div>
+                        <div class="spec-row"><span>Encoder</span><span>Precision Quadrature Optical Encoder</span></div>
+                        <div class="spec-row"><span>Interface</span><span>Advanced embedded interface + driver circuitry</span></div>
+                        <div class="spec-row"><span>Control Strategies</span><span>P, PI, PID, Classical, Modern, MPC, Robust</span></div>
+                        <div class="spec-row"><span>Software</span><span>Interactive front-end + MATLAB/Simulink compatible</span></div>
+                    </div>
+                    <div class="kit-btns">
+                        <a href="https://drive.google.com/file/d/13TGs09L5IN_khvjujketwIiq4HmpDnH7/view?usp=drive_link" target="_blank" class="btn btn-primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            DCMK Brochure
+                        </a>
+                        <a href="https://youtu.be/5_pCkMSPyOo" target="_blank" class="btn btn-outline">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            Watch Overview
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dc-highlights fade-up">
+                <div class="dc-hl"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><h5>Classroom Tested — 15+ Years</h5><p>Used in control systems teaching at IIT Bombay; battle-tested across India's top engineering institutions.</p></div></div>
+                <div class="dc-hl"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><h5>Make-in-India Initiative</h5><p>Developed under the MHRD Virtual Labs project; fully aligned with national manufacturing priorities.</p></div></div>
+                <div class="dc-hl"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><h5>Bundle of 7 Interactive Experiments</h5><p>Transfer function analysis, PI speed control with disturbance rejection, integrator anti-windup, PID position control and more.</p></div></div>
+                <div class="dc-hl"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><div><h5>Portable & Affordable</h5><p>Low-cost, highly portable; creates real-world plant experience. Available on Govt. e-Marketplace (GeM).</p></div></div>
+            </div>
+
+            <span class="apps-label">Application Areas</span>
+            <div class="apps-grid fade-up">
+                <div class="app-chip">Speed & Position Control</div>
+                <div class="app-chip">P, PI, PID Control</div>
+                <div class="app-chip">Classical & Modern Control</div>
+                <div class="app-chip">Model Predictive Control</div>
+                <div class="app-chip">Robust Control</div>
+                <div class="app-chip">System Identification</div>
+                <div class="app-chip">Disturbance Rejection</div>
+                <div class="app-chip">Transfer Function Analysis</div>
+            </div>
+
+            <div class="video-row fade-up">
+                <a href="https://youtu.be/5_pCkMSPyOo" target="_blank" class="video-card">
+                    <div class="video-preview"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></div></div>
+                    <div class="video-meta"><strong>DC Motor Kit Overview</strong><span>Watch the full kit demonstration on YouTube</span></div>
+                </a>
+                <a href="https://www.youtube.com/playlist?list=PLzsrOq7YyBW1A6zMcdZMvmP-TaLOs1_SZ" target="_blank" class="video-card">
+                    <div class="video-preview"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></div></div>
+                    <div class="video-meta"><strong>ML Kit Full Playlist</strong><span>Complete tutorial and experiment series on YouTube</span></div>
+                </a>
+            </div>
+
+        </div><!-- end panel-dcmk -->
+
+        <!-- RESOURCES — shared -->
+        <div class="resources-box fade-up">
+            <h4 style="display:flex;align-items:center;gap:10px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;flex-shrink:0;"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                Downloads & Resources
+            </h4>
+            <p class="sub">All documents link directly to Google Drive — always the latest version.</p>
+            <div class="res-grid">
+                <a href="https://drive.google.com/file/d/1S5B8qFAAvu89NcPVzePH0xWyA2PiLeTp/view?usp=drive_link" target="_blank" class="res-btn">
+                    <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+                    <div class="res-text"><h5>ML Kit Brochure</h5><p>Full product specification & features</p></div>
+                </a>
+                <a href="https://drive.google.com/file/d/13TGs09L5IN_khvjujketwIiq4HmpDnH7/view?usp=drive_link" target="_blank" class="res-btn">
+                    <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+                    <div class="res-text"><h5>DC Motor Kit Brochure</h5><p>Full product specification & features</p></div>
+                </a>
+                <a href="https://drive.google.com/file/d/1bKcuv3Nx6cHdFZF-zc6qmbaVbut-HGDj/view?usp=drive_link" target="_blank" class="res-btn">
+                    <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+                    <div class="res-text"><h5>Warranty Terms & Conditions</h5><p>Full warranty policy document</p></div>
+                </a>
+            </div>
+        </div>
+
+        <div class="inst-block fade-up">
+            <h4>Deployed at Top Institutions Across India</h4>
+            <div class="inst-row">
+                <span class="inst-pill">IIT Bombay</span><span class="inst-pill">NIT Trichy</span><span class="inst-pill">NIT Calicut</span><span class="inst-pill">IIIT Kurnool</span><span class="inst-pill">Manipal Institute of Technology</span><span class="inst-pill">NMAMIT, NITTE</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+    <div class="section-inner">
+        <div class="section-header center fade-up">
+            <span class="label">The People</span>
+            <h2>Leadership & <span class="gradient-text">Research Team</span></h2>
+            <p>Experts from IIT Bombay and world-class research institutes, united by a passion for deep tech.</p>
+        </div>
+        <div class="team-grid fade-up">
+            <div class="team-card"><div class="avatar"><img src="team-nataraj.jpg" alt="" onerror="this.parentNode.removeChild(this);this.parentNode.textContent='👨‍🔬'"></div><h4>Prof. (Retd.) Nataraj Paluri</h4><span class="role">Founder & Technical Director</span><p>Ph.D. in Control Systems. 36+ years at IIT Bombay. Expert in AI, Predictive Maintenance, and Global Optimization.</p></div>
+            <div class="team-card"><div class="avatar"><img src="team-satyavalli.jpg" alt="" onerror="this.parentNode.removeChild(this);this.parentNode.textContent='👩‍💼'"></div><h4>Ms. Satyavalli Paluri</h4><span class="role">Co-Founder & Operations Director</span><p>14+ years in technology management at IIT Bombay. Expertise in administrative and technical operations.</p></div>
+            <div class="team-card"><div class="avatar"><img src="team-sravya.jpg" alt="" onerror="this.parentNode.removeChild(this);this.parentNode.textContent='👩‍⚕️'"></div><h4>Dr. Sravya Paluri</h4><span class="role">Chief Operating Officer</span><p>Healthcare expert and Scientific Officer. Specializes in healthcare systems and AI applications in medicine.</p></div>
+            <div class="team-card"><div class="avatar"><img src="team-karan.jpg" alt="" onerror="this.parentNode.removeChild(this);this.parentNode.textContent='👨‍💻'"></div><h4>Mr. Karan Chanchlani</h4><span class="role">Lead R&D Engineer</span><p>3+ years experience in embedded systems, firmware, and robotics. Core R&D technical lead.</p></div>
+            <div class="team-card"><div class="avatar"><img src="team-ajit.jpg" alt="" onerror="this.parentNode.removeChild(this);this.parentNode.textContent='🔧'"></div><h4>Mr. Ajit Zore</h4><span class="role">Technical Specialist</span><p>8+ years at IIT Bombay and CARIMO. Specialist in component sourcing, testing, and hardware assembly.</p></div>
+            <div class="team-card"><div class="avatar"><img src="team-maryam.jpg" alt="" onerror="this.parentNode.removeChild(this);this.parentNode.textContent='👩‍🔬'"></div><h4>Ms. Maryam Bahlooli</h4><span class="role">AI Research Intern</span><p>Focused on AI and ML algorithms. Contributes to data collection and research initiatives.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="section-inner">
+        <div class="section-header center fade-up">
+            <span class="label">Get In Touch</span>
+            <h2>Contact <span class="gradient-text">CARIMO</span></h2>
+        </div>
+        <div class="contact-grid fade-up">
+            <div class="contact-card"><div class="contact-top hl"></div><div class="contact-body"><h4><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Mumbai Headquarters</h4><p>#203, Palm-1, Royal Palms Estate,<br>Aarey Colony, Goregaon (E),<br>Mumbai — 400 065</p></div></div>
+            <div class="contact-card"><div class="contact-top"></div><div class="contact-body"><h4><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> SINE, IIT Bombay</h4><p>6011b, SINE, RBTIC Building,<br>IIT Bombay, Powai,<br>Mumbai — 400 076</p></div></div>
+            <div class="contact-card"><div class="contact-top"></div><div class="contact-body"><h4><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> I-Hub, Ahmedabad</h4><p>2nd Floor, iHub,<br>Ahmedabad,<br>Gujarat — 380 015</p></div></div>
+        </div>
+        <div class="contact-cta fade-up">
+            <h3>Partner with CARIMO</h3>
+            <p>Leverage cutting-edge deep tech solutions. Let's innovate together for a smarter, more efficient world.</p>
+            <a href="mailto:contact@carimo.tech" class="email-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                contact@carimo.tech
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div style="display:flex;flex-direction:column;gap:4px;">
+        <p>© 2026 CARIMO Technologies Private Limited. All rights reserved.</p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:0.05em;text-transform:none;">#203, Palm-1, Royal Palms Estate, Aarey Colony, Goregaon (E), Mumbai — 400 065 &nbsp;·&nbsp; contact@carimo.tech</p>
+    </div>
+    <div class="footer-links">
+        <a href="https://www.linkedin.com/company/carimo-technologies-private-limited" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.65);">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            Follow us on LinkedIn
+        </a>
+        <a href="https://drive.google.com/file/d/1bKcuv3Nx6cHdFZF-zc6qmbaVbut-HGDj/view?usp=drive_link" target="_blank">Warranty T&amp;C</a>
+        <a href="mailto:contact@carimo.tech">contact@carimo.tech</a>
+    </div>
+</footer>
+
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+    // Navbar
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+        document.getElementById('back-top').classList.toggle('visible', window.scrollY > 400);
+    });
+
+    // Hamburger
+    const ham = document.getElementById('hamburger');
+    const mob = document.getElementById('mobile-menu');
+    ham.addEventListener('click', () => {
+        ham.classList.toggle('open');
+        mob.classList.toggle('open');
+        document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+    });
+    function closeMobile() {
+        ham.classList.remove('open'); mob.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    // Tabs
+    function switchTab(e, tab) {
+        document.querySelectorAll('.edu-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.edu-panel').forEach(p => p.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        const panel = document.getElementById('panel-' + tab);
+        panel.classList.add('active');
+        // Animate newly visible elements
+        panel.querySelectorAll('.fade-up').forEach(el => {
+            el.classList.remove('vis');
+            requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('vis')));
+        });
+    }
+
+    // Fade-up scroll observer
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
