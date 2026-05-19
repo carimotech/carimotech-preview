@@ -36,16 +36,16 @@
         --shadow-lg:    0 8px 40px rgba(13,31,60,0.12);
 
         /* ── TYPE SCALE (4 sizes) ─────────────────
-           Display : clamp(36px,5.5vw,64px)  Hero H1 only
-           --fs-1  : 38px   Section headings (H2)
-           --fs-2  : 26px   Panel headings (H3, kit names, AIMX title, CTA)
-           --fs-3  : 18px   All body text AND card/component headings
+           Display : clamp(32px,5vw,56px)   Hero H1 only
+           --fs-1  : 36px   Section headings (H2)
+           --fs-2  : 24px   Panel headings (H3, kit names, AIMX title, CTA)
+           --fs-3  : 16px   All body text AND card/component headings
                             — headings use font-weight 700, body uses 400
            --fs-4  : 13px   Labels, badges, captions, footer, pills, nav
         ─────────────────────────────────────────── */
-        --fs-1: 38px;
-        --fs-2: 26px;
-        --fs-3: 18px;
+        --fs-1: 36px;
+        --fs-2: 24px;
+        --fs-3: 16px;
         --fs-4: 13px;
     }
 
@@ -103,7 +103,7 @@
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--border-accent); border-radius: 100px; padding: 8px 20px; margin-bottom: 28px; font-size: var(--fs-3); font-weight: 700; letter-spacing: 0.08em; color: var(--accent); }
     .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: blink 2s infinite; }
     @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.8)} }
-    #hero h1 { font-size: clamp(36px, 5.5vw, 64px); margin-bottom: 10px; color: var(--navy); }
+    #hero h1 { font-size: clamp(32px, 5vw, 56px); margin-bottom: 10px; color: var(--navy); }
     .hero-sub { font-size: var(--fs-4); color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 20px; font-weight: 600; text-transform: uppercase; }
     #hero .lead { font-size: var(--fs-3); color: var(--text); max-width: 600px; margin: 0 auto 36px; }
     .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
@@ -595,7 +595,7 @@
                         <div class="spec-row"><span>Availability</span><span>Contact us on <a href="mailto:contact@carimo.tech" style="color:var(--accent);text-decoration:underline;">contact@carimo.tech</a></span></div>
                     </div>
                     <div class="kit-btns">
-                        <a href="https://drive.google.com/file/d/1S5B8qFAAvu89NcPVzePH0xWyA2PiLeTp/view?usp=drive_link" target="_blank" class="btn btn-primary">
+                        <a href="https://docs.google.com/presentation/d/1qsqp15AYzkc9UVpsRkxvTCKsA1dX1Xqm0cJBjGggaeY/edit?usp=drive_link" target="_blank" class="btn btn-primary">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                             MLK Brochure
                         </a>
@@ -763,8 +763,8 @@
                         <div class="spec-row"><span>License</span><span>IIT Bombay Official Technology License</span></div>
                         <div class="spec-row"><span>Encoder</span><span>Precision Quadrature Encoder</span></div>
                         <div class="spec-row"><span>Interface</span><span>Advanced embedded interface + driver circuitry</span></div>
-                        <div class="spec-row"><span>Control Strategies</span><span>P, PI, PID — Included &nbsp;·&nbsp; <span style="color:var(--accent);">MPC — Add-on</span></span></div>
-                        <div class="spec-row"><span>Software</span><span>Interactive front-end (PID included) + MATLAB/Simulink compatible &nbsp;·&nbsp; <span style="color:var(--accent);font-weight:700;">MPC software available as add-on</span></span></div>
+                        <div class="spec-row"><span>Control Strategies</span><span>P, PI, PID (included) &nbsp;·&nbsp; MPC (add-on)</span></div>
+                        <div class="spec-row"><span>Software</span><span>Interactive front-end + MATLAB/Simulink &nbsp;·&nbsp; MPC add-on available</span></div>
                         <div class="spec-row"><span>Availability</span><span>Contact us on <a href="mailto:contact@carimo.tech" style="color:var(--accent);text-decoration:underline;">contact@carimo.tech</a></span></div>
                     </div>
                     <div class="kit-btns">
@@ -788,10 +788,18 @@
             </div>
 
             <span class="apps-label">Application Areas</span>
-            <div class="apps-grid fade-up" style="grid-template-columns:repeat(2,1fr);max-width:600px;">
-                <div class="app-chip">Speed &amp; Position Control</div>
-                <div class="app-chip">P, PI, PID Control <span style="font-size:11px;color:var(--accent);font-weight:700;">(Included)</span></div>
-                <div class="app-chip" style="grid-column:1/-1;max-width:300px;margin:0 auto;">Model Predictive Control <span style="font-size:11px;color:var(--accent);font-weight:700;">(Add-on)</span></div>
+            <div class="apps-grid fade-up" style="grid-template-columns:repeat(3,1fr);max-width:820px;">
+                <div class="app-chip" style="display:flex;flex-direction:column;gap:4px;">
+                    <span>Speed &amp; Position Control</span>
+                </div>
+                <div class="app-chip" style="display:flex;flex-direction:column;gap:4px;">
+                    <span>P, PI, PID Control</span>
+                    <span style="font-size:11px;color:var(--accent);font-weight:600;letter-spacing:0.05em;">Included with kit</span>
+                </div>
+                <div class="app-chip" style="display:flex;flex-direction:column;gap:4px;">
+                    <span>Model Predictive Control</span>
+                    <span style="font-size:11px;color:var(--accent);font-weight:600;letter-spacing:0.05em;">Available as add-on</span>
+                </div>
             </div>
 
             <div class="video-row fade-up">
@@ -815,7 +823,7 @@
             </h4>
             <p class="sub">All documents link directly to Google Drive — always the latest version.</p>
             <div class="res-grid">
-                <a href="https://drive.google.com/file/d/1S5B8qFAAvu89NcPVzePH0xWyA2PiLeTp/view?usp=drive_link" target="_blank" class="res-btn">
+                <a href="https://docs.google.com/presentation/d/1qsqp15AYzkc9UVpsRkxvTCKsA1dX1Xqm0cJBjGggaeY/edit?usp=drive_link" target="_blank" class="res-btn">
                     <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
                     <div class="res-text"><h5>ML Kit Brochure</h5><p>Full product specification & features</p></div>
                 </a>
