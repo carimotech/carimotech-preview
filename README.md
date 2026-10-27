@@ -233,3 +233,10 @@ excluded. Do not "improve" this by adding their logo.
 three rows. An earlier version listed 82 model names, which handed
 competitors a full feature spec. Detailed model lists belong in the
 brochure, behind an email request. Please don't restore them to the page.
+
+## v17 — Products page
+- products.html: 5 products (ML Kit, DC Motor Kit, CALL, CCLL, CUE) with GeM links; "Products" added to the menu and footer.
+- robo.in links: paste each one into js/config.js under `products`; its button appears automatically.
+- Product details come from the ML Kit and DC Motor Kit datasheets and the CALL, CCLL and CUE brochures. The three brochure PDFs are in `brochures/`.
+- Kit photos (3 angles each) are in images/mlk-1..3.webp and images/dcmk-1..3.webp; posters for CCLL and CUE are images/ccll-poster.webp and images/cue-poster.webp.
+- "Build your own package" guide on the Products page: the customer picks kit and software, then an email to the address in js/config.js (`packageEmail`) opens with the choices filled in. No prices are shown.

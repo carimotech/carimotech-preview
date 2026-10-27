@@ -2,6 +2,7 @@
 PAGES = [
     # file, nav label, mobile label
     ("about.html",     "About",        "About"),
+    ("products.html",  "Products",     "Products"),
     ("education.html", "Edu Kits",     "Edu Kits"),
     ("matlab.html",    "MATLAB®",      "MATLAB® Ecosystems"),
     ("training.html",  "Training",     "Cari-On Learning"),

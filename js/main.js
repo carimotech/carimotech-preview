@@ -164,7 +164,7 @@
     var lb = $('#lightbox'), lbImg = $('img', lb), lastFocus;
     function openLB(src, alt) { lastFocus = document.activeElement; lbImg.src = src; lbImg.alt = alt || ''; lb.hidden = false; document.body.style.overflow = 'hidden'; $('.lb-close', lb).focus(); }
     function closeLB() { lb.hidden = true; lbImg.removeAttribute('src'); document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
-    $$('.mx-figure a').forEach(function (a) {
+    $$('.mx-figure a, a.prd-zoom').forEach(function (a) {
         a.addEventListener('click', function (e) {
             var img = $('img', a); if (!img || !img.complete || !img.naturalWidth) return; // fall back to normal link
             e.preventDefault(); openLB(a.getAttribute('href'), img.alt);
@@ -550,7 +550,7 @@
 
 /* Page pager — at the bottom of each page: "Home" on the left, next page on the right */
 (function () {
-    var pages = [['index.html', 'Home'], ['about.html', 'About'], ['education.html', 'Edu Kits'], ['matlab.html', 'MATLAB®'], ['training.html', 'Training'], ['industry.html', 'Industry'], ['labs.html', 'In the Labs']];
+    var pages = [['index.html', 'Home'], ['about.html', 'About'], ['products.html', 'Products'], ['education.html', 'Edu Kits'], ['matlab.html', 'MATLAB®'], ['training.html', 'Training'], ['industry.html', 'Industry'], ['labs.html', 'In the Labs']];
     var cur = (location.pathname.split('/').pop() || 'index.html').toLowerCase(), i = -1;
     pages.forEach(function (p, n) { if (p[0] === cur) i = n; });
     if (i < 0 && (cur === '' || cur.indexOf('.') < 0)) i = 0;
@@ -572,4 +572,110 @@
     window.addEventListener('scroll', function () { if (!t) t = requestAnimationFrame(check); }, { passive: true });
     window.addEventListener('resize', check);
     check();
+})();
+
+/* Products page: show each "View on robo.in" button once its link is set in js/config.js */
+(function () {
+    var list = document.querySelectorAll('a[data-robo]');
+    if (!list.length) return;
+    var cfg = (window.CARIMO_CONFIG && window.CARIMO_CONFIG.products) || {};
+    Array.prototype.forEach.call(list, function (a) {
+        var p = cfg[a.getAttribute('data-robo')], u = p && typeof p.robo === 'string' ? p.robo.trim() : '';
+        if (/^https:\/\//i.test(u)) { a.href = u; a.hidden = false; }
+    });
+})();
+
+/* Products page: kit photo galleries (click a thumbnail to change the main photo) */
+(function () {
+    var gals = document.querySelectorAll('[data-gal]');
+    Array.prototype.forEach.call(gals, function (g) {
+        var main = g.querySelector('.prd-stage img'), ths = g.querySelectorAll('.prd-th');
+        Array.prototype.forEach.call(ths, function (b) {
+            b.addEventListener('click', function () {
+                main.src = b.getAttribute('data-src'); main.alt = b.getAttribute('data-alt') || '';
+                Array.prototype.forEach.call(ths, function (o) { var on = o === b; o.classList.toggle('on', on); o.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+            });
+        });
+    });
+})();
+
+/* Products page: "Build your own package" guide. Builds an e-mail to us; no price is shown. */
+(function () {
+    var f = document.getElementById('pkg');
+    if (!f) return;
+    var cfg = window.CARIMO_CONFIG || {}, to = (typeof cfg.packageEmail === 'string' && cfg.packageEmail.indexOf('@') > 0) ? cfg.packageEmail : 'contact@carimo.tech';
+    var NAMES = { mlk: 'Machine Learning Kit', dcmk: 'DC Motor Kit' };
+    var opts = Array.prototype.slice.call(f.querySelectorAll('.pkg-opt')), list = document.getElementById('pkg-list'), mail = document.getElementById('pkg-mail'), qty = document.getElementById('pkg-qty');
+    var addr = document.getElementById('pkg-addr'); if (addr) addr.textContent = to;
+    function kit() { return f.querySelector('input[name=kit]:checked').value; }
+    function text(s) { return String(s).replace(/&reg;/g, '®'); }
+    function nm(o) { return text(o.querySelector('input').getAttribute('data-name').replace('(MATLAB)', '(MATLAB®)')); }
+    function q() { var n = parseInt(qty.value, 10); if (!(n >= 1)) n = 1; if (n > 999) n = 999; return n; }
+    function build() {
+        var k = kit(), inc = [], add = [];
+        opts.forEach(function (o) {
+            if (o.hidden) return;
+            var i = o.querySelector('input');
+            if (o.getAttribute('data-inc') === k) inc.push(nm(o)); else if (i.checked) add.push(nm(o));
+        });
+        var fb = k === 'mlk' ? f.querySelector('input[name=fb]:checked').value : '';
+        return { kit: NAMES[k], k: k, inc: inc, add: add, fb: fb, n: q() };
+    }
+    function render() {
+        var k = kit();
+        document.getElementById('pkg-ml').hidden = k !== 'mlk';
+        document.getElementById('pkg-fb').hidden = k !== 'mlk';
+        opts.forEach(function (o) {
+            var ok = o.getAttribute('data-kits').split(' ').indexOf(k) > -1, i = o.querySelector('input'), isInc = o.getAttribute('data-inc') === k;
+            o.hidden = !ok;
+            o.querySelector('.pkg-inc').hidden = !isInc;
+            if (isInc) { i.checked = true; i.disabled = true; o.setAttribute('data-locked', ''); }
+            else { if (i.disabled) { i.checked = false; i.disabled = false; } o.removeAttribute('data-locked'); }
+            if (!ok) i.checked = false;
+        });
+        var b = build(), html = '';
+        function li(t) { html += '<li>' + t.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</li>'; }
+        li('Kit: ' + b.kit);
+        li('Included with the kit: ' + b.inc.join(', '));
+        li('Add-ons: ' + (b.add.length ? b.add.join(', ') : 'none'));
+        if (b.k === 'mlk') li('FlexiBridge: ' + (b.fb === 'with' ? 'with' : 'without'));
+        li('Number of kits: ' + b.n);
+        list.innerHTML = html;
+        mail.href = 'mailto:' + to + '?subject=' + encodeURIComponent('Package request: ' + b.kit) + '&body=' + encodeURIComponent(body(b));
+    }
+    function body(b) {
+        return 'Hello CARIMO team,\r\n\r\nI would like a quote for this package:\r\n\r\n' +
+            'Kit: ' + b.kit + '\r\n' +
+            'Included with the kit: ' + b.inc.join(', ') + '\r\n' +
+            'Add-ons: ' + (b.add.length ? b.add.join(', ') : 'none') + '\r\n' +
+            (b.k === 'mlk' ? 'FlexiBridge: ' + (b.fb === 'with' ? 'with' : 'without') + '\r\n' : '') +
+            'Number of kits: ' + b.n + '\r\n\r\nName:\r\nInstitution:\r\nPhone:\r\n\r\nThank you.';
+    }
+    f.addEventListener('change', render);
+    qty.addEventListener('input', render);
+    qty.addEventListener('blur', function () { qty.value = q(); render(); });
+    document.getElementById('pkg-minus').addEventListener('click', function () { qty.value = Math.max(1, q() - 1); render(); });
+    document.getElementById('pkg-plus').addEventListener('click', function () { qty.value = Math.min(999, q() + 1); render(); });
+    Array.prototype.forEach.call(f.querySelectorAll('[data-preset]'), function (c) {
+        c.addEventListener('click', function () {
+            var p = c.getAttribute('data-preset'), k = kit();
+            opts.forEach(function (o) {
+                var i = o.querySelector('input'); if (o.hidden || i.disabled) return;
+                i.checked = p === 'none' ? false : o.querySelector('input').getAttribute('data-plat') === p;
+            });
+            render();
+        });
+    });
+    var copy = document.getElementById('pkg-copy');
+    copy.addEventListener('click', function () {
+        var b = build(), t = 'To: ' + to + '\r\nSubject: Package request: ' + b.kit + '\r\n\r\n' + body(b), old = copy.textContent;
+        function done(ok) { copy.textContent = ok ? 'Copied' : 'Copy failed'; setTimeout(function () { copy.textContent = old; }, 1800); }
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { done(true); }, function () { done(false); });
+        else { var a = document.createElement('textarea'); a.value = t; a.setAttribute('readonly', ''); a.style.position = 'fixed'; a.style.opacity = '0'; document.body.appendChild(a); a.select(); var ok = false; try { ok = document.execCommand('copy'); } catch (e) {} document.body.removeChild(a); done(ok); }
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-pkg-kit]'), function (a) {
+        a.addEventListener('click', function () { var r = f.querySelector('input[name=kit][value=' + a.getAttribute('data-pkg-kit') + ']'); if (r) { r.checked = true; render(); } });
+    });
+    var h = location.hash.match(/^#build-(mlk|dcmk)$/); if (h) { f.querySelector('input[name=kit][value=' + h[1] + ']').checked = true; }
+    render();
 })();
